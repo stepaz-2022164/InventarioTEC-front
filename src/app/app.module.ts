@@ -9,6 +9,7 @@ import { FormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { AppRoutingModule } from "./app-routing.module";
 import { HeaderComponent } from './components/header/header.component';
+import { HomeComponent } from './components/home/home.component';
 
 export const getToken = () => {
   return localStorage.getItem('token');
@@ -18,7 +19,8 @@ export const getToken = () => {
   declarations: [
     LoginComponent,
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    HomeComponent
   ],
   imports: [
     HttpClientModule,

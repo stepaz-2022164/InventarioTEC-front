@@ -23,7 +23,10 @@
             Operativo
           </a>
           <div class="dropdown-menu" aria-labelledby="operativoDropdown">
-            <a class="dropdown-item" href="#">Acción</a>
+            <a class="dropdown-item" href="#">Países</a>
+            <a class="dropdown-item" href="#">Regiones</a>
+            <a class="dropdown-item" href="#">HUBS</a>
+            <a class="dropdown-item" href="#">Sedes</a>
           </div>
         </li>
         <li class="nav-item dropdown px-3">
@@ -38,9 +41,12 @@
           >
             Empleados
           </a>
-          <div class="dropdown-menu" aria-labelledby="empleadosDropdown">
-            <a class="dropdown-item" href="#">Acción</a>
-          </div>
+          <ul class="dropdown-menu" aria-labelledby="empleadosDropdown">
+            <li><a class="dropdown-item" href="#">Gestión de empleados</a></li>
+            <li><a class="dropdown-item" href="#">Departamentos de empleados</a></li>
+            <li><a class="dropdown-item" href="#">Áreas de empleados</a></li>
+            <li><a class="dropdown-item" href="#">Puestos de empleados</a></li>
+          </ul>
         </li>
         <li class="nav-item dropdown px-3">
           <a
@@ -55,12 +61,16 @@
             Equipos
           </a>
           <div class="dropdown-menu" aria-labelledby="equiposDropdown">
-            <a class="dropdown-item" href="#">Acción</a>
+            <a class="dropdown-item" href="#">Gestión de equipos</a>
+            <a class="dropdown-item" href="#">Marcas</a>
+            <a class="dropdown-item" href="#">Tipos de equipos</a>
+            <a class="dropdown-item" href="#">Propietarios de equipos</a>
+            <a class="dropdown-item" href="#">Reportes de equipos</a>
           </div>
         </li>
       </ul>
-      <button class="btn btn-outline-primary my-2 my-sm-0" type="button">
-        Iniciar Sesión
+      <button class="btn btn-outline-primary my-2 my-sm-0" type="button" (click)="logout()">
+        Cerrar Sesión
       </button>
     </div>
   </nav>

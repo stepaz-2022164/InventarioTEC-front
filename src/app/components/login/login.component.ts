@@ -35,7 +35,7 @@ export class LoginComponent {
           title: 'Inicio de sesión exitoso',
           text: 'Bienvenido al sistema'
         }).then(() => {
-          this.router.navigate([''])
+          this.router.navigate(['/home'])
         });
       },
       err => {
