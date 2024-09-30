@@ -1,0 +1,48 @@
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Para distribuir elementos */
+  }
+  
+  .navbar-brand img {
+    max-height: 50px;
+  }
+  
+  .navbar-nav .nav-link {
+    color: #ff6600;
+    font-weight: bold;
+  }
+  
+  .nav-item {
+    margin-right: 50%; /* Espacio entre los elementos de menú */
+    margin-left: 25%;
+  }
+  
+  .navbar-nav .dropdown-item {
+    color: #333;
+  }
+  
+  .btn-outline-primary {
+    color: #ff6600;
+    border-color: #ff6600;
+  }
+  
+  .btn-outline-primary:hover {
+    background-color: #ff6600;
+    color: white;
+  }
+  
+  .navbar-collapse {
+    justify-content: space-between;
+  }
+  
+  @media (max-width: 992px) {
+    .navbar-collapse {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .btn {
+      margin-top: 10px;
+    }
+  }
+  

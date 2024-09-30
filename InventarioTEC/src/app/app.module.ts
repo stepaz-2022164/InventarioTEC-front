@@ -8,6 +8,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { AppRoutingModule } from "./app-routing.module";
+import { HeaderComponent } from './components/header/header.component';
 
 export const getToken = () => {
   return localStorage.getItem('token');
@@ -16,7 +17,8 @@ export const getToken = () => {
 @NgModule({
   declarations: [
     LoginComponent,
-    AppComponent
+    AppComponent,
+    HeaderComponent
   ],
   imports: [
     HttpClientModule,
