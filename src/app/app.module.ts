@@ -10,6 +10,8 @@ import { RouterModule } from "@angular/router";
 import { AppRoutingModule } from "./app-routing.module";
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
+import { TableComponent } from './components/table/table.component';
+import { PuestoEmpleadoComponent } from './components/gestor-empleados/puesto-empleado/puesto-empleado.component';
 
 export const getToken = () => {
   return localStorage.getItem('token');
@@ -20,7 +22,9 @@ export const getToken = () => {
     LoginComponent,
     AppComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    TableComponent,
+    PuestoEmpleadoComponent
   ],
   imports: [
     HttpClientModule,
