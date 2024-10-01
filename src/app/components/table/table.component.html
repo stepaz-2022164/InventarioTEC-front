@@ -1,29 +1,29 @@
 <div class="entity-table-container">
-    <div class="entity-header">
+  <div class="entity-header">
     <h2>{{ entidad }}</h2>
     <input type="text" #inputBox (input)="onSearch(inputBox.value)" placeholder="Buscar por nombre..." />
-    </div>
-    
-    <table class="table">
+    <button (click)="abrirFiltros()" class="filter-button">
+      <i class="fa fa-filter"></i>
+    </button>
+  </div>
+
+  <table class="table">
     <thead>
-        <tr>
-          <th *ngFor="let nombreColumna of nombreColumnas">{{ nombreColumna }}</th>
-        </tr>
+      <tr>
+        <th *ngFor="let nombreColumna of nombreColumnas">{{ nombreColumna }}</th>
+      </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let item of filtros.slice((pagina-1)*10, pagina*10)">
-          <td *ngFor="let columna of columnas">{{ item[columna] }}</td>
-        </tr>
+      <tr *ngFor="let item of filtros.slice((pagina - 1) * 10, pagina * 10)">
+        <td *ngFor="let columna of columnas">{{ item[columna] }}</td>
+      </tr>
     </tbody>
-    </table>
-    <div class="pagination">
-      <button *ngFor="let i of [].constructor(totalPaginas); let idx = index" 
-            (click)="cambiarPagina(idx + 1)" 
-            [class.active]="pagina === idx + 1">{{ idx + 1 }}
+  </table>
+
+  <div class="pagination">
+    <button *ngFor="let i of getPaginasArray()" 
+            (click)="cambiarPagina(i)" 
+            [class.active]="pagina === i">{{ i }}
     </button>
-    </div>
-    
-    <button (click)="abrirFiltros()" class="filter-button">
-    <i class="fa fa-filter"></i>
-    </button>
-</div> 
+  </div>
+</div>

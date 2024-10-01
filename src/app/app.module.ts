@@ -12,6 +12,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
 import { TableComponent } from './components/table/table.component';
 import { PuestoEmpleadoComponent } from './components/gestor-empleados/puesto-empleado/puesto-empleado.component';
+import { AreaEmpleadosComponent } from './components/gestor-empleados/area-empleados/area-empleados.component';
 
 export const getToken = () => {
   return localStorage.getItem('token');
@@ -24,7 +25,8 @@ export const getToken = () => {
     HeaderComponent,
     HomeComponent,
     TableComponent,
-    PuestoEmpleadoComponent
+    PuestoEmpleadoComponent,
+    AreaEmpleadosComponent
   ],
   imports: [
     HttpClientModule,

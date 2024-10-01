@@ -1,48 +1,51 @@
 .entity-table-container {
-    width: 100%;
-  }
-  
-  .entity-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
-  }
-  
-  .table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .table th, .table td {
-    padding: 0.75rem;
-    border: 1px solid #ddd;
-  }
-  
-  .pagination {
-    display: flex;
-    justify-content: center;
-    margin-top: 1rem;
-  }
-  
-  .pagination button {
-    margin: 0 5px;
-    padding: 5px 10px;
-    border: none;
-    background-color: #f0f0f0;
-    cursor: pointer;
-  }
-  
-  .pagination button.active {
-    background-color: #ff6600;
-    color: white;
-  }
-  
-  .filter-button {
-    float: right;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-    font-size: 1.5rem;
-  }
-  
+  width: 80%; /* Ajusta este valor para reducir el tamaño */
+  margin: 0 auto; /* Centra el contenedor */
+  max-width: 800px; /* Establece un ancho máximo para evitar que la tabla sea demasiado grande */
+  padding: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Añade una sombra ligera para mejorar el diseño */
+  background-color: white; /* Fondo blanco para destacar la tabla */
+  border-radius: 8px; /* Bordes redondeados */
+}
+
+.entity-header{
+  padding: 16px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  padding: 16px;
+}
+
+.table th, .table td {
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.pagination button {
+  margin: 0 5px;
+  padding: 5px 10px;
+  border: none;
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+.pagination button.active {
+  background-color: #ff6600;
+  color: white;
+}
+
+.filter-button {
+  float: right;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 1.5rem;
+}

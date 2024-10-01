@@ -1,7 +1,9 @@
+<app-header></app-header>
 <app-table
     entidad = "Puesto Empleado"
     apiUrl = "http://localhost:5290/api/PuestoEmpleado/getPuestosEmpleados"
-    [columnas] = "['idPuestoEmpleado', 'nombrePuestoEmpleado', 'descripcionPuestoEmpleado', 'idAreaEmpleado']"
-    [nombreColumnas] = "['Id', 'Puesto', 'Descripción', 'Area de empleado']">
+    apirUrlGetByName= "http://localhost:5290/api/PuestoEmpleado/getPuestoEmpleadoByName?name="
+    [columnas] = "['idPuestoEmpleado', 'nombrePuestoEmpleado', 'descripcionPuestoEmpleado', 'nombreAreaEmpleado']"
+    [nombreColumnas] = "['Id', 'Puesto', 'Descripción', 'Área de empleado']">
 </app-table>
 

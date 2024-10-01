@@ -10,6 +10,7 @@ import { debounceTime, Subject } from 'rxjs';
 export class TableComponent implements OnInit {
   @Input() entidad!: string;
   @Input() apiUrl!: string;
+  @Input() apirUrlGetByName!: string;
   @Input() columnas!: string[];
   @Input() nombreColumnas!: string[];
   data: any[] = [];
@@ -26,29 +27,54 @@ export class TableComponent implements OnInit {
 
       this.buscador.pipe(debounceTime(500)).subscribe(terminoBuscador => {
         this.terminoBuscador = terminoBuscador;
+        this.getData();
       })
       
   }
 
   getData() {
-    this.http.get<any[]>(`${this.apiUrl}?page=${this.pagina}`)
-    .subscribe(data => {
-        this.data = data;
+    if (this.terminoBuscador) {
+      // Enviar la búsqueda por nombre
+      this.http.get<any>(`${this.apirUrlGetByName}${this.terminoBuscador}`)
+      .subscribe(response => {
+        this.data = response; 
         this.totalPaginas = Math.ceil(this.data.length / 10);
+        this.aplicarFiltros();
+      }, error => {
+        this.data = [];
+        this.totalPaginas = 1;
+        this.filtros = [];
       });
+    } else {
+      // Enviar la solicitud con paginación cuando no hay término de búsqueda
+      this.http.get<any>(`${this.apiUrl}?pagina=${this.pagina}&numeroPaginas=10`)
+      .subscribe(response => {
+        this.data = response.data;
+        console.log(response.data)
+        const totalRecords = response.totalRecords;
+        this.totalPaginas = Math.ceil(totalRecords / 10);  // Actualizar el número de páginas
+        this.aplicarFiltros();
+      });
+    }
   }
+  
+  getPaginasArray(): number[] {
+    return Array.from({ length: this.totalPaginas }, (_, i) => i + 1);
+  }
+  
 
   onSearch(term: string){
     this.buscador.next(term);
   } 
 
-  aplicarFiltros(){
+  aplicarFiltros() {
     this.filtros = this.data.filter(item =>
-      this.data.some(col => item[col].toString().toLowerCase().includes(this.terminoBuscador.toLowerCase()))
-    )
+      this.columnas.some(col => item[col]?.toString().toLowerCase().includes(this.terminoBuscador.toLowerCase()))
+    );
   }
-
+  
   cambiarPagina(pagina: number){
+    console.log(`Cambiando a la página: ${pagina}`);
     this.pagina = pagina;
     this.getData();
   }
