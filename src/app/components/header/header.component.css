@@ -1,0 +1,67 @@
+.navbar {
+  display: flex;
+  justify-content: space-between; /* Para distribuir elementos */
+}
+
+.navbar-brand img {
+  max-height: 50px;
+}
+
+.navbar-nav .nav-link {
+  color: #ff6600;
+  font-weight: bold;
+}
+
+.nav-item {
+  margin-right: 50%;
+  margin-left: 50%;
+}
+
+.navbar-nav .dropdown-item {
+  color: #333;
+}
+
+.btn-outline-primary {
+  color: #ff6600;
+  border-color: #ff6600;
+}
+
+.btn-outline-primary:hover {
+  background-color: #ff6600;
+  color: white;
+}
+
+.navbar-collapse {
+  justify-content: space-between;
+}
+
+/* Estilos para que los menús se desplieguen al pasar el cursor */
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+  margin-top: 0; /* Ajusta la posición del menú desplegable si es necesario */
+  opacity: 1;    /* Asegura que sea visible */
+  transition: opacity 0.2s ease-in-out; /* Transición suave */
+}
+
+.dropdown-menu {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+/* Para pantallas pequeñas */
+@media (max-width: 992px) {
+  .navbar-collapse {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .btn {
+    margin-top: 10px;
+  }
+
+  .nav-item{
+    margin-right: 0%;
+    margin-left: 0%;
+  }
+}
