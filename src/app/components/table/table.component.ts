@@ -29,12 +29,10 @@ export class TableComponent implements OnInit {
         this.terminoBuscador = terminoBuscador;
         this.getData();
       })
-      
   }
 
   getData() {
     if (this.terminoBuscador) {
-      // Enviar la búsqueda por nombre
       this.http.get<any>(`${this.apirUrlGetByName}${this.terminoBuscador}`)
       .subscribe(response => {
         this.data = response; 
@@ -46,14 +44,12 @@ export class TableComponent implements OnInit {
         this.filtros = [];
       });
     } else {
-      // Enviar la solicitud con paginación cuando no hay término de búsqueda
       this.http.get<any>(`${this.apiUrl}?pagina=${this.pagina}&numeroPaginas=10`)
       .subscribe(response => {
         this.data = response.data;
-        console.log(response.data)
         const totalRecords = response.totalRecords;
-        this.totalPaginas = Math.ceil(totalRecords / 10);  // Actualizar el número de páginas
-        this.aplicarFiltros();
+        this.totalPaginas = Math.ceil(totalRecords / 10); 
+        this.filtros = [...this.data];
       });
     }
   }
@@ -68,13 +64,16 @@ export class TableComponent implements OnInit {
   } 
 
   aplicarFiltros() {
-    this.filtros = this.data.filter(item =>
-      this.columnas.some(col => item[col]?.toString().toLowerCase().includes(this.terminoBuscador.toLowerCase()))
-    );
+    if (this.terminoBuscador) {
+      this.filtros = this.data.filter(item =>
+        this.columnas.some(col => item[col]?.toString().toLowerCase().includes(this.terminoBuscador.toLowerCase()))
+      );
+    } else {
+      this.filtros = [...this.data];
+    }
   }
   
   cambiarPagina(pagina: number){
-    console.log(`Cambiando a la página: ${pagina}`);
     this.pagina = pagina;
     this.getData();
   }
