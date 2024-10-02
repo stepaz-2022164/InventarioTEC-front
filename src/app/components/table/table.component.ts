@@ -19,16 +19,24 @@ export class TableComponent implements OnInit {
   pagina: number = 1;
   totalPaginas: number = 1;
   buscador: Subject<string> = new Subject();
+  isSearchDisabled: boolean = false;
 
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
       this.getData();
+      this.statusSearch();
 
       this.buscador.pipe(debounceTime(500)).subscribe(terminoBuscador => {
         this.terminoBuscador = terminoBuscador;
         this.getData();
       })
+  }
+
+  statusSearch() {
+    if (this.apirUrlGetByName.length == 0) {
+      this.isSearchDisabled = true;
+    }
   }
 
   getData() {

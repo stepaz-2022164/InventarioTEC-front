@@ -1,7 +1,7 @@
 .entity-table-container {
-  width: 80%; /* Ajusta este valor para reducir el tamaño */
+  width: 100%; /* Ajusta este valor para reducir el tamaño */
   margin: 0 auto; /* Centra el contenedor */
-  max-width: 800px; /* Establece un ancho máximo para evitar que la tabla sea demasiado grande */
+  max-width: 1200px; /* Establece un ancho máximo para evitar que la tabla sea demasiado grande */
   padding: 16px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Añade una sombra ligera para mejorar el diseño */
   background-color: white; /* Fondo blanco para destacar la tabla */

@@ -1,1 +1,8 @@
-<p>sede works!</p>
+<app-header></app-header>
+<app-table
+    entidad="Sedes"
+    apiUrl="http://localhost:5290/api/Sede/getSedes"
+    apirUrlGetByName="http://localhost:5290/api/Sede/getSedeByName?name="
+    [columnas]="['idSede', 'nombreSede', 'direccionSede', 'nombrePais', 'nombreRegion', 'nombreHUB']"
+    [nombreColumnas]="['Id', 'Nombre', 'Dirección', 'País', 'Región', 'HUB']">    
+</app-table>

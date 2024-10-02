@@ -1,1 +1,8 @@
-<p>region works!</p>
+<app-header></app-header>
+<app-table
+    entidad="Región"
+    apiUrl="http://localhost:5290/api/Region/getRegiones"
+    apirUrlGetByName=""
+    [columnas]="['idRegion', 'nombreRegion', 'nombrePais']"
+    [nombreColumnas]="['Id', 'Nombre', 'País']">
+</app-table>

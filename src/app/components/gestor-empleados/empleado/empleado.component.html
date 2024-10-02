@@ -1,1 +1,8 @@
-<p>empleado works!</p>
+<app-header></app-header>
+<app-table
+    entidad="Empleado"
+    apiUrl="http://localhost:5290/api/Empleado/getEmpleados"
+    apirUrlGetByName="http://localhost:5290/api/Empleado/getEmpleadoByName?name="
+    [columnas]="['idEmpleado', 'nombreEmpleado', 'numeroDeFicha', 'telefonoEmpleado', 'correoEmpleado', 'nombreDepartamentoEmpleado', 'nombreAreaEmpleado', 'nombrePuestoEmpleado', 'nombreSede']"
+    [nombreColumnas]="['Id', 'Nombre', 'Ficha', 'Télefono', 'Correo', 'Departamento', 'Área', 'Puesto', 'Sede']">
+</app-table>

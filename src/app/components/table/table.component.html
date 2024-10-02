@@ -1,7 +1,7 @@
 <div class="entity-table-container">
   <div class="entity-header">
     <h2>{{ entidad }}</h2>
-    <input type="text" #inputBox (input)="onSearch(inputBox.value)" placeholder="Buscar por nombre..." />
+    <input type="text" #inputBox (input)="onSearch(inputBox.value)" [disabled]="isSearchDisabled.valueOf()" placeholder="Buscar por nombre..." />
     <button (click)="abrirFiltros()" class="filter-button">
       <i class="fa fa-filter"></i>
     </button>
