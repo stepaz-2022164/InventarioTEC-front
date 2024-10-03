@@ -1,1 +1,8 @@
-<p>propietario-equipo works!</p>
+<app-header></app-header>
+<app-table
+    entidad="Propietario Equipo"
+    apiUrl="http://localhost:5290/api/PropietarioEquipo/getPropietariosEquipos"
+    apirUrlGetByName="http://localhost:5290/api/PropietarioEquipo/getEquipoByOwner?nombre="
+    [columnas]="['idPropietarioEquipo', 'nombreEmpleado', 'numeroDeSerie', 'fechaDeEntrega']"
+    [nombreColumnas]="['Id', 'Empleado', 'Número de serie equipo', 'Fecha de entrega']">
+</app-table>

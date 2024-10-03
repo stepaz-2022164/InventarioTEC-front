@@ -10,6 +10,11 @@ import { HubComponent } from './components/operativo/hub/hub.component';
 import { SedeComponent } from './components/operativo/sede/sede.component';
 import { DepartamentoEmpleadoComponent } from './components/gestor-empleados/departamento-empleado/departamento-empleado.component';
 import { EmpleadoComponent } from './components/gestor-empleados/empleado/empleado.component';
+import { EquipoComponent } from './components/gestor-equipos/equipo/equipo.component';
+import { MarcaComponent } from './components/gestor-equipos/marca/marca.component';
+import { TipoEquipoComponent } from './components/gestor-equipos/tipo-equipo/tipo-equipo.component';
+import { PropietarioEquipoComponent } from './components/gestor-equipos/propietario-equipo/propietario-equipo.component';
+import { ReporteEquipoComponent } from './components/gestor-equipos/reporte-equipo/reporte-equipo.component';
 
 const routes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -22,7 +27,12 @@ const routes: Routes = [
     {path: 'hub', component: HubComponent},
     {path: 'sede', component: SedeComponent},
     {path: 'departamentoEmpleado', component: DepartamentoEmpleadoComponent},
-    {path: 'empleado', component: EmpleadoComponent}
+    {path: 'empleado', component: EmpleadoComponent},
+    {path: 'equipo', component: EquipoComponent},
+    {path: 'marca', component: MarcaComponent},
+    {path: 'tipoDeEquipo', component: TipoEquipoComponent},
+    {path: 'propietarioEquipo', component: PropietarioEquipoComponent},
+    {path: 'reporteEquipo', component: ReporteEquipoComponent}
 ];
 
 @NgModule({

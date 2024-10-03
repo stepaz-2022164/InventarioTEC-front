@@ -1,1 +1,8 @@
-<p>tipo-equipo works!</p>
+<app-header></app-header>
+<app-table
+    entidad="Tipo De Equipo"
+    apiUrl="http://localhost:5290/api/TipoDeEquipo/getTiposDeEquipos"
+    apirUrlGetByName="http://localhost:5290/api/TipoDeEquipo/getTipoDeEquipoByName?nombre="
+    [columnas]="['idTipoDeEquipo', 'nombreTipoDeEquipo', 'descripcionTipoDeEquipo', 'nombreMarca']"
+    [nombreColumnas]="['Id', 'Nombre', 'Descripción', 'Marca']">
+</app-table>
