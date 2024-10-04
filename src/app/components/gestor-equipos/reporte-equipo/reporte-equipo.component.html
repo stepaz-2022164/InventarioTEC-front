@@ -3,6 +3,8 @@
     entidad="Reporte Equipo"
     apiUrl="http://localhost:5290/api/ReporteEquipo/getReporteEquipos"
     apirUrlGetByName="http://localhost:5290/api/ReporteEquipo/getReporteEquipoBySerialNumber?serialNumber="
+    apirUrlCreate="/createReporteEquipo"
+    apirUrlDelete="http://localhost:5290/api/ReporteEquipo/deleteReporteEquipo?id="
     [columnas]="['idReporteEquipo', 'numeroDeSerie', 'descripcionReporteEquipo', 'fechaReporte']"
     [nombreColumnas]="['Id', 'Número de serie', 'Descripción', 'Fecha del reporte']">
 </app-table>

@@ -1,11 +1,11 @@
 .entity-table-container {
-  width: 100%; /* Ajusta este valor para reducir el tamaño */
-  margin: 0 auto; /* Centra el contenedor */
-  max-width: 1200px; /* Establece un ancho máximo para evitar que la tabla sea demasiado grande */
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1200px;
   padding: 16px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Añade una sombra ligera para mejorar el diseño */
-  background-color: white; /* Fondo blanco para destacar la tabla */
-  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  border-radius: 8px;
 }
 
 .entity-header{
@@ -77,3 +77,13 @@
   font-size: 16px; /* Tamaño del ícono */
 }
 
+.delete-button {
+  background-color: transparent;
+  border: none;
+  color: red;
+  cursor: pointer;
+}
+
+.delete-button i {
+  font-size: 1.2rem;
+}

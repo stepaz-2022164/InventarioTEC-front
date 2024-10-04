@@ -3,6 +3,8 @@
     entidad="Propietario Equipo"
     apiUrl="http://localhost:5290/api/PropietarioEquipo/getPropietariosEquipos"
     apirUrlGetByName="http://localhost:5290/api/PropietarioEquipo/getEquipoByOwner?nombre="
+    apirUrlCreate="/createPropietarioEquipo"
+    apirUrlDelete="http://localhost:5290/api/PropietarioEquipo/deletePropietarioEquipo?id="
     [columnas]="['idPropietarioEquipo', 'nombreEmpleado', 'numeroDeSerie', 'fechaDeEntrega']"
     [nombreColumnas]="['Id', 'Empleado', 'Número de serie equipo', 'Fecha de entrega']">
 </app-table>
