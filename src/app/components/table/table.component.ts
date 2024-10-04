@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { debounceTime, Subject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-table',
@@ -13,6 +14,7 @@ export class TableComponent implements OnInit {
   @Input() apirUrlGetByName!: string;
   @Input() columnas!: string[];
   @Input() nombreColumnas!: string[];
+  @Input() apirUrlCreate!: string;
   data: any[] = [];
   filtros: any[] = [];
   terminoBuscador: string = '';
@@ -20,12 +22,14 @@ export class TableComponent implements OnInit {
   totalPaginas: number = 1;
   buscador: Subject<string> = new Subject();
   isSearchDisabled: boolean = false;
+  isCreateDisabled: boolean = false;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
       this.getData();
       this.statusSearch();
+      this.statusCreate();
 
       this.buscador.pipe(debounceTime(500)).subscribe(terminoBuscador => {
         this.terminoBuscador = terminoBuscador;
@@ -36,6 +40,12 @@ export class TableComponent implements OnInit {
   statusSearch() {
     if (this.apirUrlGetByName.length == 0) {
       this.isSearchDisabled = true;
+    }
+  }
+
+  statusCreate() {
+    if (this.apirUrlCreate == null) {
+      this.isCreateDisabled = true;
     }
   }
 
@@ -88,5 +98,9 @@ export class TableComponent implements OnInit {
 
   abrirFiltros(){
     
+  }
+
+  crearEntidad(){
+    this.router.navigate([this.apirUrlCreate])
   }
 }
