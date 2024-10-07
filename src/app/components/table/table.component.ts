@@ -190,7 +190,11 @@ export class TableComponent implements OnInit {
       }
     })
   }
-    
+
+  closeModal(){
+    $('#modalUpdate').modal('hide');
+  }
+  
   getNombreColumna(campo: string): string {
     const index = this.columnas.indexOf(campo);
     return index !== -1 ? this.nombreColumnas[index] : campo;
