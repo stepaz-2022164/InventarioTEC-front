@@ -11,7 +11,7 @@
     <thead>
       <tr>
         <th *ngFor="let nombreColumna of nombreColumnas">{{ nombreColumna }}</th>
-        <th [hidden]="isDeleteDisabled.valueOf()">Acciones</th> <!-- Columna para los botones de acciones -->
+        <th [hidden]="isDeleteDisabled.valueOf()">Acciones</th>
       </tr>
     </thead>
     <tbody>
@@ -20,11 +20,9 @@
           {{ item[columna] }}
         </td>
         <td [hidden]="isDeleteDisabled.valueOf()">
-          <!-- Botón de Editar -->
           <button class="edit-button" (click)="abriModalUpdate(i)">
             <i class="fa fa-edit"></i>
           </button>
-          <!-- Botón de Eliminar -->
           <button class="delete-button" (click)="eliminar(i)">
             <i class="fa fa-trash"></i>
           </button>
@@ -47,37 +45,30 @@
     </button>
   </div>
 
-  <!-- Modal de edición -->
-  <div class="modal fade" id="modalUpdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Editar Registro</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form>
-            <div class="form-group">
-              <label for="nombreEmpleado">Nombre</label>
-              <input [(ngModel)]="registroSeleccionado.nombreEmpleado" type="text" class="form-control" id="nombreEmpleado" placeholder="Nombre del empleado">
-            </div>
-            <div class="form-group">
-              <label for="telefonoEmpleado">Teléfono</label>
-              <input [(ngModel)]="registroSeleccionado.telefonoEmpleado" type="text" class="form-control" id="telefonoEmpleado" placeholder="Teléfono">
-            </div>
-            <div class="form-group">
-              <label for="correoEmpleado">Correo</label>
-              <input [(ngModel)]="registroSeleccionado.correoEmpleado" type="email" class="form-control" id="correoEmpleado" placeholder="Correo electrónico">
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-primary" (click)="actualizar()">Guardar Cambios</button>
-        </div>
+<!-- Modal de edición -->
+<div class="modal fade" id="modalUpdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Editar Registro</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div *ngFor="let campo of camposActualizables" class="form-group">
+            <label [for]="campo">{{ getNombreColumna(campo) }}</label>
+            <input [(ngModel)]="registroSeleccionado[campo]" [name]="campo" type="text" class="form-control" [id]="campo" [placeholder]="'Ingrese ' + getNombreColumna(campo)">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" (click)="actualizar()">Guardar Cambios</button>
       </div>
     </div>
   </div>
+</div>
+
 </div>

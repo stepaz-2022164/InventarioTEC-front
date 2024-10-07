@@ -5,6 +5,8 @@
     apirUrlGetByName="http://localhost:5290/api/Empleado/getEmpleadoByName?name="
     apirUrlCreate="/createEmpleado"
     apirUrlDelete="http://localhost:5290/api/Empleado/deleteEmpleado?id="
+    apiUrlUpdate="http://localhost:5290/api/Empleado/updateEmpleado?id="
     [columnas]="['idEmpleado', 'nombreEmpleado', 'numeroDeFicha', 'telefonoEmpleado', 'correoEmpleado', 'nombreDepartamentoEmpleado', 'nombreAreaEmpleado', 'nombrePuestoEmpleado', 'nombreSede']"
-    [nombreColumnas]="['Id', 'Nombre', 'Ficha', 'Télefono', 'Correo', 'Departamento', 'Área', 'Puesto', 'Sede']">
+    [nombreColumnas]="['Id', 'Nombre', 'Ficha', 'Télefono', 'Correo', 'Departamento', 'Área', 'Puesto', 'Sede']"
+    [camposActualizables]="['nombreEmpleado', 'telefonoEmpleado', 'correoEmpleado']">
 </app-table>

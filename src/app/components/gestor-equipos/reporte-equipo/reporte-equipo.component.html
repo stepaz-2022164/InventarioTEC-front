@@ -6,5 +6,6 @@
     apirUrlCreate="/createReporteEquipo"
     apirUrlDelete="http://localhost:5290/api/ReporteEquipo/deleteReporteEquipo?id="
     [columnas]="['idReporteEquipo', 'numeroDeSerie', 'descripcionReporteEquipo', 'fechaReporte']"
-    [nombreColumnas]="['Id', 'Número de serie', 'Descripción', 'Fecha del reporte']">
+    [nombreColumnas]="['Id', 'Número de serie', 'Descripción', 'Fecha del reporte']"
+    [camposActualizables]="['fechaReporte', 'descripcionReporteEquipo']">
 </app-table>

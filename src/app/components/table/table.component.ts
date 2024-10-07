@@ -20,6 +20,8 @@ export class TableComponent implements OnInit {
   @Input() apirUrlCreate!: string;
   @Input() apirUrlDelete!: string;
   @Input() apiUrlUpdate!: string;
+  @Input() camposActualizables!: string[];
+
   data: any[] = [];
   filtros: any[] = [];
   terminoBuscador: string = '';
@@ -154,17 +156,28 @@ export class TableComponent implements OnInit {
     });
   }
 
+  
   abriModalUpdate(indexFila: number){
     const registro = this.filtros[indexFila];
     this.registroSeleccionado = {...registro};
     $('#modalUpdate').modal('show');
   }
 
+  
   actualizar(){
     const id = this.registroSeleccionado[this.columnas[0]];
+
+    if (this.registroSeleccionado == '') {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Campos Incompletos',
+        text: 'Por favor llene todos los campos'
+      });
+      return;
+    }
     this.http.put(`${this.apiUrlUpdate}${id}`, this.registroSeleccionado)
     .subscribe({
-      next: (renponse) => {
+      next: (response) => {
         Swal.fire('Actualizado!', 'Registro actualizado exitosamente', 'success')
         .then(() => {
           $('#modalUpdate').modal('hide');
@@ -177,4 +190,10 @@ export class TableComponent implements OnInit {
       }
     })
   }
+    
+  getNombreColumna(campo: string): string {
+    const index = this.columnas.indexOf(campo);
+    return index !== -1 ? this.nombreColumnas[index] : campo;
+  }
+  
 }

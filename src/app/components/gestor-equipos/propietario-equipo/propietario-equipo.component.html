@@ -5,6 +5,7 @@
     apirUrlGetByName="http://localhost:5290/api/PropietarioEquipo/getEquipoByOwner?nombre="
     apirUrlCreate="/createPropietarioEquipo"
     apirUrlDelete="http://localhost:5290/api/PropietarioEquipo/deletePropietarioEquipo?id="
-    [columnas]="['idPropietarioEquipo', 'nombreEmpleado', 'numeroDeSerie', 'fechaDeEntrega']"
-    [nombreColumnas]="['Id', 'Empleado', 'Número de serie equipo', 'Fecha de entrega']">
+    [columnas]="['idPropietarioEquipo', 'nombreEmpleado','nombreTipoDeEquipo' ,'numeroDeSerie', 'fechaDeEntrega']"
+    [nombreColumnas]="['Id', 'Empleado', 'Tipo De Equipo','Número de serie equipo', 'Fecha de entrega']"
+    [camposActualizables]="['idEmpleado', 'idEquipo', 'fechaDeEntrega']">
 </app-table>
