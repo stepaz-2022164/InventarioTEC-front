@@ -2,13 +2,12 @@
 <app-form
     titulo="Equipo"
     apiUrlCreate="http://localhost:5290/api/Equipo/createEquipo"
-    apiUrlGet="http://localhost:5290/api/TipoDeEquipo/getTiposDeEquipos"
     [titulos]="['Número de serie', 'Estado del equipo', 'Fecha de ingreso', 'Tipo de equipo']"
     [campos]="[
         {nombre: 'numeroDeSerie', tipo: 'text', llaveForanea: false},
         {nombre: 'estadoEquipo', tipo: 'text', llaveForanea: false},
         {nombre: 'fechaDeIngreso', tipo: 'date', llaveForanea: false},
-        {nombre: 'idTipoDeEquipo', tipo: 'text', llaveForanea: true}
+        {nombre: 'nombreTipoDeEquipo', tipo: 'number', llaveForanea: true, urlGet:'http://localhost:5290/api/TipoDeEquipo/getTiposDeEquipos'}
         ]"
     urlEntidad="/equipo">
 </app-form>

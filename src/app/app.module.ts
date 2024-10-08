@@ -26,6 +26,7 @@ import { ReporteEquipoComponent } from './components/gestor-equipos/reporte-equi
 import { TipoEquipoComponent } from './components/gestor-equipos/tipo-equipo/tipo-equipo.component';
 import { FormComponent } from './components/form/form.component';
 import { FormEquipoComponent } from './components/gestor-equipos/equipo/form-equipo/form-equipo.component';
+import { FormEmpleadoComponent } from './components/gestor-empleados/empleado/form-empleado/form-empleado.component';
 
 export const getToken = () => {
   return localStorage.getItem('token');
@@ -52,7 +53,8 @@ export const getToken = () => {
     ReporteEquipoComponent,
     TipoEquipoComponent,
     FormComponent,
-    FormEquipoComponent
+    FormEquipoComponent,
+    FormEmpleadoComponent
   ],
   imports: [
     HttpClientModule,

@@ -16,6 +16,7 @@ import { TipoEquipoComponent } from './components/gestor-equipos/tipo-equipo/tip
 import { PropietarioEquipoComponent } from './components/gestor-equipos/propietario-equipo/propietario-equipo.component';
 import { ReporteEquipoComponent } from './components/gestor-equipos/reporte-equipo/reporte-equipo.component';
 import { FormEquipoComponent } from './components/gestor-equipos/equipo/form-equipo/form-equipo.component';
+import { FormEmpleadoComponent } from './components/gestor-empleados/empleado/form-empleado/form-empleado.component';
 
 const routes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -34,7 +35,8 @@ const routes: Routes = [
     {path: 'tipoDeEquipo', component: TipoEquipoComponent},
     {path: 'propietarioEquipo', component: PropietarioEquipoComponent},
     {path: 'reporteEquipo', component: ReporteEquipoComponent},
-    {path: 'createEquipo', component: FormEquipoComponent}
+    {path: 'createEquipo', component: FormEquipoComponent},
+    {path: 'createEmpleado', component: FormEmpleadoComponent}
 ];
 
 @NgModule({

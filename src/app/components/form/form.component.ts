@@ -11,9 +11,9 @@ import { HttpClient } from '@angular/common/http';
 export class FormComponent implements OnInit {
   @Input() titulo!: string;
   @Input() apiUrlCreate!: string;
-  @Input() apiUrlGet!: string;
+  @Input() apiUrlsGet!: {[key: string]: string};
   @Input() titulos!: string[];
-  @Input() campos!: {nombre: string, tipo: string, llaveForanea: boolean, opciones?: any[]}[];
+  @Input() campos!: {nombre: string, tipo: string, llaveForanea: boolean, opciones?: any[], urlGet?: string}[];
   @Input() urlEntidad!: string;
   registro: any = {};
 
@@ -25,11 +25,11 @@ export class FormComponent implements OnInit {
 
   obtenerDatosForaneos() {
     this.campos.forEach(campo => {
-      if (campo.llaveForanea && this.apiUrlGet) {
-        this.http.get<any>(this.apiUrlGet).subscribe({
+      if (campo.llaveForanea && campo.urlGet) {
+        this.http.get<any>(campo.urlGet).subscribe({
           next: (response) =>  {
             campo.opciones = response.data.map((item: any) => {
-              return {id: item.idTipoDeEquipo, nombre: item.nombreTipoDeEquipo}
+              return {id: item.id, nombre: item.nombre}
             });
           },
           error: () => {
@@ -38,6 +38,10 @@ export class FormComponent implements OnInit {
         });
       }
     });
+  }
+
+  volverATabla() {
+    this.router.navigate([`${this.urlEntidad}`]);
   }
 
   guardarDatos() {
@@ -60,7 +64,7 @@ export class FormComponent implements OnInit {
     this.http.post(this.apiUrlCreate, this.registro)
       .subscribe({
         next: () => {
-          Swal.fire('Éxito', 'Entidad creada exitosamente', 'success').then(() => {
+          Swal.fire('Éxito', 'Registro creado exitosamente', 'success').then(() => {
             this.router.navigate([`${this.urlEntidad}`])
           });
         },

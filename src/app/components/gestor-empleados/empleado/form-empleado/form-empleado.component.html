@@ -1,0 +1,17 @@
+<app-header></app-header>
+<app-form
+    titulo="Empleado"
+    apiUrlCreate="http://localhost:5290/api/Empleado/createEmpleado"
+    [titulos]="['Número de ficha', 'Nombre', 'Télefono', 'Correo', 'Departamento Empleado', 'Área Empleado', 'Puesto Empleado', 'Sede']"
+    [campos]="[
+        {nombre: 'numeroDeFicha' , tipo: 'text', llaveForanea: false},
+        {nombre: 'nombreEmpleado', tipo: 'text', llaveForanea: false},
+        {nombre: 'telefonoEmpleado', tipo: 'text', llaveForanea: false},
+        {nombre: 'correoEmpleado', tipo: 'text', llaveForanea: false},
+        {nombre: 'nombreDepartamentoEmpleado', tipo: 'number', llaveForanea: true, urlGet:'http://localhost:5290/api/DepartamentoEmpleado/getDepartamentosEmpleados'},
+        {nombre: 'nombreAreaEmpleado', tipo: 'number', llaveForanea: true, urlGet:'http://localhost:5290/api/AreaEmpleado/getAreasEmpleados'},
+        {nombre: 'nombrePuestoEmpleado', tipo: 'number', llaveForanea: true, urlGet:'http://localhost:5290/api/PuestoEmpleado/getPuestosEmpleados'},
+        {nombre: 'nombreSede', tipo: 'number', llaveForanea: true, urlGet:'http://localhost:5290/api/Sede/getSedes'}
+    ]"
+    urlEntidad="/empleado">
+</app-form>

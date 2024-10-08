@@ -21,6 +21,7 @@ export class TableComponent implements OnInit {
   @Input() apirUrlDelete!: string;
   @Input() apiUrlUpdate!: string;
   @Input() camposActualizables!: string[];
+  @Input() placeHolder!: string;
 
   data: any[] = [];
   filtros: any[] = [];
