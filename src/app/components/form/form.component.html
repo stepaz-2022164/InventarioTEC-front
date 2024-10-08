@@ -1,0 +1,25 @@
+<div class="form-container">
+    <form (ngSubmit)="guardarDatos()">
+        <h2>{{ titulo }}</h2>
+        
+        <div *ngFor="let campo of campos; let i = index" class="form-group">
+            <label class="form-title">{{ titulos[i] || campo.nombre }}</label>
+
+            <!-- Input para campos básicos -->
+            <input *ngIf="campo.tipo === 'text' || campo.tipo === 'number'" [type]="campo.tipo" class="form-control"
+                [(ngModel)]="registro[campo.nombre]" name="{{campo.nombre}}">
+
+            <!-- Select para llaves foráneas -->
+            <select *ngIf="campo.llaveForanea" class="form-control" [(ngModel)]="registro[campo.nombre]"
+                name="{{campo.nombre}}">
+                <option *ngFor="let opcion of campo.opciones" [value]="opcion.id"> {{opcion.id}} | {{opcion.nombre}}</option>
+            </select>
+
+            <!-- Date picker para campos de fecha -->
+            <input *ngIf="campo.tipo === 'date'" type="date" class="form-control" [(ngModel)]="registro[campo.nombre]"
+                name="{{campo.nombre}}">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+</div>
