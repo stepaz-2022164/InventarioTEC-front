@@ -10,6 +10,20 @@ import { RouterModule } from "@angular/router";
 import { AppRoutingModule } from "./app-routing.module";
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
+import { TableComponent } from './components/table/table.component';
+import { PuestoEmpleadoComponent } from './components/gestor-empleados/puesto-empleado/puesto-empleado.component';
+import { AreaEmpleadosComponent } from './components/gestor-empleados/area-empleados/area-empleados.component';
+import { PaisComponent } from './components/operativo/pais/pais.component';
+import { RegionComponent } from './components/operativo/region/region.component';
+import { HubComponent } from './components/operativo/hub/hub.component';
+import { SedeComponent } from './components/operativo/sede/sede.component';
+import { EmpleadoComponent } from './components/gestor-empleados/empleado/empleado.component';
+import { DepartamentoEmpleadoComponent } from './components/gestor-empleados/departamento-empleado/departamento-empleado.component';
+import { EquipoComponent } from './components/gestor-equipos/equipo/equipo.component';
+import { MarcaComponent } from './components/gestor-equipos/marca/marca.component';
+import { PropietarioEquipoComponent } from './components/gestor-equipos/propietario-equipo/propietario-equipo.component';
+import { ReporteEquipoComponent } from './components/gestor-equipos/reporte-equipo/reporte-equipo.component';
+import { TipoEquipoComponent } from './components/gestor-equipos/tipo-equipo/tipo-equipo.component';
 
 export const getToken = () => {
   return localStorage.getItem('token');
@@ -20,7 +34,21 @@ export const getToken = () => {
     LoginComponent,
     AppComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    TableComponent,
+    PuestoEmpleadoComponent,
+    AreaEmpleadosComponent,
+    PaisComponent,
+    RegionComponent,
+    HubComponent,
+    SedeComponent,
+    EmpleadoComponent,
+    DepartamentoEmpleadoComponent,
+    EquipoComponent,
+    MarcaComponent,
+    PropietarioEquipoComponent,
+    ReporteEquipoComponent,
+    TipoEquipoComponent
   ],
   imports: [
     HttpClientModule,

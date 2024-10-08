@@ -1,0 +1,11 @@
+<app-header></app-header>
+<app-table
+    entidad="Tipo De Equipo"
+    apiUrl="http://localhost:5290/api/TipoDeEquipo/getTiposDeEquipos"
+    apirUrlGetByName="http://localhost:5290/api/TipoDeEquipo/getTipoDeEquipoByName?nombre="
+    apirUrlCreate="/createTipoEquipo"
+    apirUrlDelete="http://localhost:5290/api/TipoDeEquipo/deleteTipoDeEquipo?id="
+    [columnas]="['idTipoDeEquipo', 'nombreTipoDeEquipo', 'descripcionTipoDeEquipo', 'nombreMarca']"
+    [nombreColumnas]="['Id', 'Nombre', 'Descripción', 'Marca']"
+    [camposActualizables]="['nombreTipoDeEquipo', 'descripcionTipoDeEquipo']">
+</app-table>

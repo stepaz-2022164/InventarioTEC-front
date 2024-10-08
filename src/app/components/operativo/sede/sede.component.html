@@ -1,0 +1,12 @@
+<app-header></app-header>
+<app-table
+    entidad="Sedes"
+    apiUrl="http://localhost:5290/api/Sede/getSedes"
+    apirUrlGetByName="http://localhost:5290/api/Sede/getSedeByName?name="
+    apirUrlCreate="/createSede"
+    apirUrlDelete="http://localhost:5290/api/Sede/deleteSede?id="
+    apiUrlUpdate="http://localhost:5290/api/Sede/updateSede?id="
+    [columnas]="['idSede', 'nombreSede', 'direccionSede', 'nombrePais', 'nombreRegion', 'nombreHUB']"
+    [nombreColumnas]="['Id', 'Nombre', 'Dirección', 'País', 'Región', 'HUB']"
+    [camposActualizables]="['nombreSede', 'direccionSede']">    
+</app-table>

@@ -1,0 +1,8 @@
+<app-header></app-header>
+<app-table
+    entidad= "Área Empleado"
+    apiUrl= "http://localhost:5290/api/AreaEmpleado/getAreasEmpleados"
+    apirUrlGetByName= "http://localhost:5290/api/AreaEmpleado/getAreaEmpleadoByName?name="
+    [columnas]= "['idAreaEmpleado', 'nombreAreaEmpleado', 'descripcionAreaEmpleado', 'nombreDepartamentoEmpleado']"
+    [nombreColumnas]= "['Id', 'Nombre', 'Descripción', 'Departamendo Empleado']">
+</app-table>

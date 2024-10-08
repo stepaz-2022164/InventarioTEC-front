@@ -1,0 +1,74 @@
+<div class="entity-table-container">
+  <div class="entity-header">
+    <h2>{{ entidad }}</h2>
+    <input type="text" #inputBox (input)="onSearch(inputBox.value)" [hidden]="isSearchDisabled.valueOf()" placeholder="Buscar por nombre..." />
+    <button (click)="abrirFiltros()" class="filter-button">
+      <i class="fa fa-filter"></i>
+    </button>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th *ngFor="let nombreColumna of nombreColumnas">{{ nombreColumna }}</th>
+        <th [hidden]="isDeleteDisabled.valueOf()">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of filtros; let i = index">
+        <td *ngFor="let columna of columnas; let j = index" [attr.data-index]="j">
+          {{ item[columna] }}
+        </td>
+        <td [hidden]="isDeleteDisabled.valueOf()">
+          <button class="edit-button" (click)="abriModalUpdate(i)">
+            <i class="fa fa-edit"></i>
+          </button>
+          <button class="delete-button" (click)="eliminar(i)">
+            <i class="fa fa-trash"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>     
+  </table>
+
+  <div class="pagination">
+    <button *ngFor="let i of getPaginasArray()" 
+            (click)="cambiarPagina(i)" 
+            [class.active]="pagina === i">{{ i }}
+    </button>
+  </div>
+
+  <div class="button-container" (click)="crearEntidad()" [hidden]="isCreateDisabled.valueOf()">
+    <button class="create-button">
+      Crear Nuevo Registro
+      <i class="fa fa-arrow-right"></i>
+    </button>
+  </div>
+
+<!-- Modal de edición -->
+<div class="modal fade" id="modalUpdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Editar Registro</h5>
+        <button type="button" class="close" (click)="closeModal()" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div *ngFor="let campo of camposActualizables" class="form-group">
+            <label [for]="campo">{{ getNombreColumna(campo) }}</label>
+            <input [(ngModel)]="registroSeleccionado[campo]" [name]="campo" type="text" class="form-control" [id]="campo" [placeholder]="'Ingrese ' + getNombreColumna(campo)">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" (click)="actualizar()">Guardar Cambios</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>

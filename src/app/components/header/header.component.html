@@ -1,77 +1,85 @@
 <nav class="navbar navbar-expand-lg navbar-light px-5">
-    <a class="navbar-brand" href="#">
-      <img
-        src="../../../assets/icono-caja.png"
-        width="50"
-        height="50"
-        class="d-inline-block align-top"
-        alt="Logo"
-      />
-    </a>
-    <div class="collapse navbar-collapse">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item dropdown px-3">
-          <a
-            class="nav-link dropdown-toggle"
-            href="#"
-            id="operativoDropdown"
-            role="button"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            Operativo
-          </a>
-          <div class="dropdown-menu" aria-labelledby="operativoDropdown">
-            <a class="dropdown-item" href="#">Países</a>
-            <a class="dropdown-item" href="#">Regiones</a>
-            <a class="dropdown-item" href="#">HUBS</a>
-            <a class="dropdown-item" href="#">Sedes</a>
-          </div>
-        </li>
-        <li class="nav-item dropdown px-3">
-          <a
-            class="nav-link dropdown-toggle"
-            href="#"
-            id="empleadosDropdown"
-            role="button"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            Empleados
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="empleadosDropdown">
-            <li><a class="dropdown-item" href="#">Gestión de empleados</a></li>
-            <li><a class="dropdown-item" href="#">Departamentos de empleados</a></li>
-            <li><a class="dropdown-item" href="#">Áreas de empleados</a></li>
-            <li><a class="dropdown-item" href="#">Puestos de empleados</a></li>
-          </ul>
-        </li>
-        <li class="nav-item dropdown px-3">
-          <a
-            class="nav-link dropdown-toggle"
-            href="#"
-            id="equiposDropdown"
-            role="button"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            Equipos
-          </a>
-          <div class="dropdown-menu" aria-labelledby="equiposDropdown">
-            <a class="dropdown-item" href="#">Gestión de equipos</a>
-            <a class="dropdown-item" href="#">Marcas</a>
-            <a class="dropdown-item" href="#">Tipos de equipos</a>
-            <a class="dropdown-item" href="#">Propietarios de equipos</a>
-            <a class="dropdown-item" href="#">Reportes de equipos</a>
-          </div>
-        </li>
-      </ul>
-      <button class="btn btn-outline-primary my-2 my-sm-0" type="button" (click)="logout()">
-        Cerrar Sesión
-      </button>
-    </div>
-  </nav>
-  
+  <a class="navbar-brand" href="/home">
+    <img
+      src="../../../assets/icono-caja.png"
+      width="50"
+      height="50"
+      class="d-inline-block align-top"
+      alt="Logo"
+    />
+  </a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#navbarResponsive"
+    aria-controls="navbarResponsive"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarResponsive">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item dropdown px-3">
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          id="operativoDropdown"
+          role="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Operativo
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="operativoDropdown">
+          <li><a class="dropdown-item" href="/paises">Países</a></li>
+          <li><a class="dropdown-item" href="/region">Regiones</a></li>
+          <li><a class="dropdown-item" href="/hub">HUBS</a></li>
+          <li><a class="dropdown-item" href="/sede">Sedes</a></li>
+        </ul>
+      </li>
+      <li class="nav-item dropdown px-3">
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          id="empleadosDropdown"
+          role="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Empleados
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="empleadosDropdown">
+          <li><a class="dropdown-item" href="/empleado">Gestión de empleados</a></li>
+          <li><a class="dropdown-item" href="/departamentoEmpleado">Departamentos de empleados</a></li>
+          <li><a class="dropdown-item" href="/areaEmpleado">Áreas de empleados</a></li>
+          <li><a class="dropdown-item" href="/puestoEmpleado">Puestos de empleados</a></li>
+        </ul>
+      </li>
+      <li class="nav-item dropdown px-3">
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          id="equiposDropdown"
+          role="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Equipos
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="equiposDropdown">
+          <li><a class="dropdown-item" href="/equipo">Gestión de equipos</a></li>
+          <li><a class="dropdown-item" href="/marca">Marcas</a></li>
+          <li><a class="dropdown-item" href="/tipoDeEquipo">Tipos de equipos</a></li>
+          <li><a class="dropdown-item" href="/propietarioEquipo">Propietarios de equipos</a></li>
+          <li><a class="dropdown-item" href="/reporteEquipo">Reportes de equipos</a></li>
+        </ul>
+      </li>
+    </ul>
+    <button class="btn btn-outline-primary my-2 my-sm-0" type="button" (click)="logout()">
+      Cerrar Sesión
+    </button>
+  </div>
+</nav>

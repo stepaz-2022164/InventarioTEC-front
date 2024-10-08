@@ -1,0 +1,11 @@
+<app-header></app-header>
+<app-table
+    entidad="Equipo"
+    apiUrl="http://localhost:5290/api/Equipo/getEquipos"
+    apirUrlGetByName="http://localhost:5290/api/Equipo/getEquipoBySerialNumber?serialNumber="
+    apirUrlCreate="/createEquipo"
+    apirUrlDelete="http://localhost:5290/api/Equipo/deleteEquipo?id="
+    [columnas]="['idEquipo', 'nombreTipoDeEquipo' ,'numeroDeSerie', 'estadoEquipo', 'fechaDeIngreso' ]"
+    [nombreColumnas]="['Id', 'Tipo de equipo', 'No. Serie', 'Estado', 'Fecha de ingreso']"
+    [camposActualizables]="['numeroDeSerie', 'estadoEquipo', 'fechaDeIngreso']">
+</app-table>
