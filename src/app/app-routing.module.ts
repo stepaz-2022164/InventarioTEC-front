@@ -17,6 +17,12 @@ import { PropietarioEquipoComponent } from './components/gestor-equipos/propieta
 import { ReporteEquipoComponent } from './components/gestor-equipos/reporte-equipo/reporte-equipo.component';
 import { FormEquipoComponent } from './components/gestor-equipos/equipo/form-equipo/form-equipo.component';
 import { FormEmpleadoComponent } from './components/gestor-empleados/empleado/form-empleado/form-empleado.component';
+import { FormSedeComponent } from './components/operativo/sede/form-sede/form-sede.component';
+import { FormPuestoEmpleadoComponent } from './components/gestor-empleados/puesto-empleado/form-puesto-empleado/form-puesto-empleado.component';
+import { FormMarcaComponent } from './components/gestor-equipos/marca/form-marca/form-marca.component';
+import { FormTipoEquipoComponent } from './components/gestor-equipos/tipo-equipo/form-tipo-equipo/form-tipo-equipo.component';
+import { FormPropietarioEquipoComponent } from './components/gestor-equipos/propietario-equipo/form-propietario-equipo/form-propietario-equipo.component';
+import { FormReporteEquipoComponent } from './components/gestor-equipos/reporte-equipo/form-reporte-equipo/form-reporte-equipo.component';
 
 const routes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -36,7 +42,13 @@ const routes: Routes = [
     {path: 'propietarioEquipo', component: PropietarioEquipoComponent},
     {path: 'reporteEquipo', component: ReporteEquipoComponent},
     {path: 'createEquipo', component: FormEquipoComponent},
-    {path: 'createEmpleado', component: FormEmpleadoComponent}
+    {path: 'createEmpleado', component: FormEmpleadoComponent},
+    {path: 'createSede', component: FormSedeComponent},
+    {path: 'createPuestoEmpleado', component: FormPuestoEmpleadoComponent},
+    {path: 'createMarca', component: FormMarcaComponent},
+    {path: 'createTipoEquipo', component: FormTipoEquipoComponent},
+    {path: 'createPropietarioEquipo', component: FormPropietarioEquipoComponent},
+    {path: 'createReporteEquipo', component: FormReporteEquipoComponent}
 ];
 
 @NgModule({

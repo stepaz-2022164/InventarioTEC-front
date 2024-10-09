@@ -1,0 +1,12 @@
+<app-header></app-header>
+<app-form
+    titulo="Tipo De Equipo"
+    apiUrlCreate="http://localhost:5290/api/TipoDeEquipo/createTipoDeEquipo"
+    [titulos]="['Nombre del tipo de equipo', 'Descripción', 'Marca']"
+    [campos]="[
+        {nombre: 'nombreTipoDeEquipo', tipo: 'text', llaveForanea: false},
+        {nombre: 'descripcionTipoDeEquipo', tipo: 'text', llaveForanea: false},
+        {nombre: 'idMarca', tipo: 'text', llaveForanea: true, urlGet: 'http://localhost:5290/api/Marca/getMarcas'}
+    ]"
+    urlEntidad="/tipoDeEquipo">
+</app-form>

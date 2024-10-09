@@ -1,0 +1,14 @@
+<app-header></app-header>
+<app-form
+    titulo="Sede"
+    apiUrlCreate="http://localhost:5290/api/Sede/createSede"
+    [titulos]="['Nombre', 'Dirección', 'País', 'Región', 'HUB']"
+    [campos]="[
+        {nombre: 'nombreSede', tipo: 'text', llaveForanea: false},
+        {nombre: 'direccionSede', tipo: 'text', llaveForanea: false},
+        {nombre: 'idPais', tipo: 'number', llaveForanea: true, urlGet: 'http://localhost:5290/api/Pais/getPaises'},
+        {nombre: 'idRegion', tipo: 'number', llaveForanea: true, urlGet: 'http://localhost:5290/api/Region/getRegiones'},
+        {nombre: 'idHUB', tipo: 'number', llaveForanea: true, urlGet: 'http://localhost:5290/api/HUB/getHUBS'}
+    ]"
+    urlEntidad="/sede">
+</app-form>
