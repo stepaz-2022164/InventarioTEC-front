@@ -47,28 +47,59 @@
 
 <!-- Modal de edición -->
 <div class="modal fade" id="modalUpdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content border-primary">
+      <div class="modal-header bg-primary text-white">
         <h5 class="modal-title" id="exampleModalLabel">Editar Registro</h5>
-        <button type="button" class="close" (click)="closeModal()" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close text-white" (click)="closeModal()" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <form>
-          <div *ngFor="let campo of camposActualizables" class="form-group">
-            <label [for]="campo">{{ getNombreColumna(campo) }}</label>
-            <input [(ngModel)]="registroSeleccionado[campo]" [name]="campo" type="text" class="form-control" [id]="campo" [placeholder]="'Ingrese ' + getNombreColumna(campo)">
+          <div class="row">
+            <div *ngFor="let campo of camposActualizables" class="col-md-6 mb-3">
+              <div class="form-group">
+                <label [for]="campo.nombre">{{ getNombreColumna(campo.nombre) }}</label>
+
+                <!-- Input para campos de texto y número -->
+                <input *ngIf="(campo.tipo === 'text' || campo.tipo === 'number') && !campo.llaveForanea" 
+                      [type]="campo.tipo" 
+                      class="form-control" 
+                      [(ngModel)]="registroSeleccionado[campo.nombre]" 
+                      [name]="campo.nombre" 
+                      [id]="campo.nombre"
+                      placeholder="Ingrese {{ getNombreColumna(campo.nombre) }}">
+
+                <!-- Select para llaves foráneas -->
+                <select *ngIf="campo.llaveForanea" 
+                        class="form-control" 
+                        [name]="campo.nombre" 
+                        [id]="campo.nombre">
+                  <option *ngFor="let opcion of campo.opciones" [(ngModel)]="registroSeleccionado[campo.nombre]" [value]="opcion.id">
+                    {{opcion.id}} | {{ opcion.nombre }}
+                  </option>
+                </select>
+
+                <!-- Date picker para campos de fecha -->
+                <input *ngIf="campo.tipo === 'date'" 
+                      type="date" 
+                      class="form-control" 
+                      [(ngModel)]="registroSeleccionado[campo.nombre]"
+                      [name]="campo.nombre" 
+                      [id]="campo.nombre">
+              </div>
+            </div>
           </div>
         </form>
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer d-flex justify-content-between">
         <button type="button" class="btn btn-secondary" (click)="closeModal()" data-dismiss="modal">Cancelar</button>
         <button type="button" class="btn btn-primary" (click)="actualizar()">Guardar Cambios</button>
       </div>
     </div>
   </div>
 </div>
+
 
 </div>

@@ -4,9 +4,9 @@
     apiUrlCreate="http://localhost:5290/api/PropietarioEquipo/createPropietarioEquipo"
     [titulos]="['Empleado', 'Tipo De Equipo', 'Equipo', 'Fecha de entrega']"
     [campos]="[
-        {nombre: 'idEmpleado', tipo: 'number', llaveForanea: true, urlGet:'http://localhost:5290/api/Empleado/getEmpleados'},
-        {nombre: 'idTipoDeEquipo', tipo: 'number', llaveForanea: true, urlGet:'http://localhost:5290/api/TipoDeEquipo/getTiposDeEquipos'},
-        {nombre: 'idEquipo', tipo: 'number', llaveForanea: true, urlGet:'http://localhost:5290/api/Equipo/getEquipos'},
+        {nombre: 'idEmpleado', tipo: 'number', llaveForanea: true, urlGet:'http://localhost:5290/api/Empleado/getEmpleadosAll'},
+        {nombre: 'idTipoDeEquipo', tipo: 'number', llaveForanea: true, urlGet:'http://localhost:5290/api/TipoDeEquipo/getTiposDeEquiposAll'},
+        {nombre: 'idEquipo', tipo: 'number', llaveForanea: true, urlGet:'http://localhost:5290/api/Equipo/getEquiposAll'},
         {nombre: 'fechaDeEntrega', tipo: 'date', llaveForanea: false}
     ]"
     urlEntidad="/propietarioEquipo">

@@ -7,6 +7,9 @@
     apirUrlDelete="http://localhost:5290/api/TipoDeEquipo/deleteTipoDeEquipo?id="
     [columnas]="['id', 'nombre', 'descripcionTipoDeEquipo', 'nombreMarca']"
     [nombreColumnas]="['Id', 'Nombre', 'Descripción', 'Marca']"
-    [camposActualizables]="['nombreTipoDeEquipo', 'descripcionTipoDeEquipo']"
+    [camposActualizables]="[
+        {nombre: 'nombre', tipo: 'text', llaveForanea: false},
+        {nombre: 'descripcionTipoDeEquipo', tipo: 'text', llaveForanea: false}
+    ]"
     placeHolder="Buscar por nombre">
 </app-table>

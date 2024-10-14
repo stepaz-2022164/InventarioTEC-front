@@ -8,6 +8,10 @@
     apiUrlUpdate="http://localhost:5290/api/Equipo/updateEquipo?id="
     [columnas]="['id', 'nombreTipoDeEquipo' ,'nombre', 'estadoEquipo', 'fechaDeIngreso' ]"
     [nombreColumnas]="['Id', 'Tipo de equipo', 'No. Serie', 'Estado', 'Fecha de ingreso']"
-    [camposActualizables]="['numeroDeSerie', 'estadoEquipo', 'fechaDeIngreso']"
+    [camposActualizables]="[
+        {nombre: 'nombre', tipo: 'text', llaveForanea: false},
+        {nombre: 'estadoEquipo', tipo: 'text', llaveForanea: false},
+        {nombre: 'fechaDeIngreso', tipo: 'date', llaveForanea: false}
+    ]"
     placeHolder="Buscar por No. de serie">
 </app-table>

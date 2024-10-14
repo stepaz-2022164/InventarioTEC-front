@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectorRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { debounceTime, Subject } from 'rxjs';
 import { Router } from '@angular/router';
@@ -20,7 +20,7 @@ export class TableComponent implements OnInit {
   @Input() apirUrlCreate!: string;
   @Input() apirUrlDelete!: string;
   @Input() apiUrlUpdate!: string;
-  @Input() camposActualizables!: string[];
+  @Input() camposActualizables!: {nombre: string, tipo: string, llaveForanea: boolean, opciones?: any[], urlGet?: string}[];
   @Input() placeHolder!: string;
 
   data: any[] = [];
@@ -35,7 +35,7 @@ export class TableComponent implements OnInit {
   isUpdateDisabled: boolean = false;
   registroSeleccionado: any = {};
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private cdr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
       this.getData();
@@ -48,6 +48,26 @@ export class TableComponent implements OnInit {
         this.getData();
       })
   }
+
+  obtenerDatosForaneos(): Promise<void> {
+    const promesas = this.camposActualizables.map(campo => {
+      if (campo.llaveForanea && campo.urlGet) {
+        return this.http.get<any>(campo.urlGet).toPromise().then(response => {
+          campo.opciones = response.data.map((item: any) => {
+            return { id: item.id, nombre: item.nombre };
+          });
+        }).catch(() => {
+          Swal.fire('Error', 'No se pudieron cargar las opciones para las entidades foráneas.', 'error');
+        });
+      } else {
+        return Promise.resolve(); // Si no es llave foránea, resolvemos la promesa de inmediato
+      }
+    });
+  
+    // Devolver una promesa que se resuelva cuando todas las promesas individuales se hayan completado
+    return Promise.all(promesas).then(() => {});
+  }
+  
 
   statusSearch() {
     if (this.apirUrlGetByName.length == 0) {
@@ -157,17 +177,23 @@ export class TableComponent implements OnInit {
     });
   }
 
-  
   abriModalUpdate(indexFila: number){
     const registro = this.filtros[indexFila];
     this.registroSeleccionado = {...registro};
-    $('#modalUpdate').modal('show');
+
+    this.camposActualizables.forEach(campo => {
+      if (campo.tipo === 'date' && this.registroSeleccionado[campo.nombre]) {
+        this.registroSeleccionado[campo.nombre] = new Date(this.registroSeleccionado[campo.nombre]).toISOString().split('T')[0];
+      }
+    });
+    
+    this.obtenerDatosForaneos().then(() => {
+      $('#modalUpdate').modal('show');
+    });
   }
 
-  
   actualizar(){
     const id = this.registroSeleccionado[this.columnas[0]];
-
     if (this.registroSeleccionado == '') {
       Swal.fire({
         icon: 'warning',

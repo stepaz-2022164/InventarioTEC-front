@@ -5,8 +5,14 @@
     apirUrlGetByName="http://localhost:5290/api/PropietarioEquipo/getEquipoByOwner?nombre="
     apirUrlCreate="/createPropietarioEquipo"
     apirUrlDelete="http://localhost:5290/api/PropietarioEquipo/deletePropietarioEquipo?id="
+    apiUrlUpdate="http://localhost:5290/api/PropietarioEquipo/updatePropietarioEquipo?id="
     [columnas]="['idPropietarioEquipo', 'nombreEmpleado','nombreTipoDeEquipo' ,'numeroDeSerie', 'fechaDeEntrega']"
     [nombreColumnas]="['Id', 'Empleado', 'Tipo De Equipo','Número de serie equipo', 'Fecha de entrega']"
-    [camposActualizables]="['idEmpleado', 'idEquipo', 'fechaDeEntrega']"
+    [camposActualizables]="[
+        {nombre: 'nombreEmpleado', tipo: 'number', llaveForanea: true, urlGet: 'http://localhost:5290/api/Empleado/getEmpleadosAll'},
+        {nombre: 'nombreTipoDeEquipo', tipo: 'number', llaveForanea: true, urlGet: 'http://localhost:5290/api/TipoDeEquipo/getTiposDeEquiposAll'},
+        {nombre: 'numeroDeSerie', tipo: 'number', llaveForanea: true, urlGet: 'http://localhost:5290/api/Equipo/getEquiposAll'},
+        {nombre: 'fechaDeEntrega', tipo: 'text', llaveForanea: false}
+    ]"
     placeHolder="Buscar por empleado">
 </app-table>

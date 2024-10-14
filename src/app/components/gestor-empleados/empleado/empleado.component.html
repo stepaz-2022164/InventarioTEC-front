@@ -8,6 +8,10 @@
     apiUrlUpdate="http://localhost:5290/api/Empleado/updateEmpleado?id="
     [columnas]="['id', 'nombre', 'numeroDeFicha', 'telefonoEmpleado', 'correoEmpleado', 'nombreDepartamentoEmpleado', 'nombreAreaEmpleado', 'nombrePuestoEmpleado', 'nombreSede']"
     [nombreColumnas]="['Id', 'Nombre', 'Ficha', 'Télefono', 'Correo', 'Departamento', 'Área', 'Puesto', 'Sede']"
-    [camposActualizables]="['nombreEmpleado', 'telefonoEmpleado', 'correoEmpleado']"
+    [camposActualizables]="[
+        {nombre: 'nombre', tipo: 'text', llaveForanea: false},
+        {nombre: 'telefonoEmpleado', tipo: 'text', llaveForanea: false},
+        {nombre: 'correoEmpleado', tipo: 'text', llaveForanea: false}
+    ]"
     placeHolder="Buscar por nombre">
 </app-table>

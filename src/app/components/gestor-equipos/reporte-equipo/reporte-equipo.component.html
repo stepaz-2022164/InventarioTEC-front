@@ -5,8 +5,12 @@
     apirUrlGetByName="http://localhost:5290/api/ReporteEquipo/getReporteEquipoBySerialNumber?serialNumber="
     apirUrlCreate="/createReporteEquipo"
     apirUrlDelete="http://localhost:5290/api/ReporteEquipo/deleteReporteEquipo?id="
+    apiUrlUpdate="http://localhost:5290/api/ReporteEquipo/updateReporteEquipo?id="
     [columnas]="['idReporteEquipo', 'numeroDeSerie', 'descripcionReporteEquipo', 'fechaReporte']"
     [nombreColumnas]="['Id', 'Número de serie', 'Descripción', 'Fecha del reporte']"
-    [camposActualizables]="['fechaReporte', 'descripcionReporteEquipo']"
+    [camposActualizables]="[
+        {nombre: 'fechaReporte', tipo: 'date', llaveForanea: false},
+        {nombre: 'descripcionReporteEquipo', tipo: 'text', llaveForanea: false}
+    ]"
     placeHolder="Buscar por No. de serie">
 </app-table>
