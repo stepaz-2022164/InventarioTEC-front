@@ -176,20 +176,30 @@ export class TableComponent implements OnInit {
     });
   }
 
-  abriModalUpdate(indexFila: number){
+  abriModalUpdate(indexFila: number) {
     const registro = this.filtros[indexFila];
-    this.registroSeleccionado = {...registro};
-
+    this.registroSeleccionado = { ...registro };
+  
     this.camposActualizables.forEach(campo => {
       if (campo.tipo === 'date' && this.registroSeleccionado[campo.nombre]) {
-        this.registroSeleccionado[campo.nombre] = new Date(this.registroSeleccionado[campo.nombre]).toISOString().split('T')[0];
+        const fechaString = this.registroSeleccionado[campo.nombre];
+        const regexFecha = /^(\d{2})\/(\d{2})\/(\d{4})$/;
+  
+        if (regexFecha.test(fechaString)) {
+          const partesFecha = fechaString.split('/');
+          const fechaFormateada = `${partesFecha[2]}-${partesFecha[1]}-${partesFecha[0]}`;
+          this.registroSeleccionado[campo.nombre] = new Date(fechaFormateada).toISOString().split('T')[0];
+        } else {
+          this.registroSeleccionado[campo.nombre] = new Date(this.registroSeleccionado[campo.nombre]).toISOString().split('T')[0];
+        }
       }
     });
-    
+  
     this.obtenerDatosForaneos().then(() => {
       $('#modalUpdate').modal('show');
     });
   }
+  
 
   actualizar(){
     const id = this.registroSeleccionado[this.columnas[0]];

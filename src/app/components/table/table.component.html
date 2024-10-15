@@ -73,10 +73,10 @@
 
                 <!-- Select para llaves foráneas -->
                 <select *ngIf="campo.llaveForanea" 
+                        [(ngModel)]="registroSeleccionado[campo.nombre]"
                         class="form-control" 
-                        [name]="campo.nombre" 
-                        [id]="campo.nombre">
-                  <option *ngFor="let opcion of campo.opciones" [(ngModel)]="registroSeleccionado[campo.nombre]" [value]="opcion.id">
+                        [name]="campo.nombre">
+                  <option *ngFor="let opcion of campo.opciones" [value]="opcion.id">
                     {{opcion.id}} | {{ opcion.nombre }}
                   </option>
                 </select>
