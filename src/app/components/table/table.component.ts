@@ -60,11 +60,10 @@ export class TableComponent implements OnInit {
           Swal.fire('Error', 'No se pudieron cargar las opciones para las entidades foráneas.', 'error');
         });
       } else {
-        return Promise.resolve(); // Si no es llave foránea, resolvemos la promesa de inmediato
+        return Promise.resolve();
       }
     });
-  
-    // Devolver una promesa que se resuelva cuando todas las promesas individuales se hayan completado
+
     return Promise.all(promesas).then(() => {});
   }
   
