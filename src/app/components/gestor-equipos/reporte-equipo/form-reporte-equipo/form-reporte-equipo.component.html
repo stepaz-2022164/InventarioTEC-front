@@ -1,0 +1,12 @@
+<app-header></app-header>
+<app-form
+    titulo="Reporte Equipo"
+    apiUrlCreate="http://localhost:5290/api/ReporteEquipo/createReporteEquipo"
+    [titulos]="['Fecha del reporte', 'Descripción', 'Equipo']"
+    [campos]="[
+        {nombre: 'fechaReporte', tipo: 'date', llaveForanea: false},
+        {nombre: 'descripcionReporteEquipo', tipo: 'text', llaveForanea: false},
+        {nombre: 'idEquipo', tipo: 'number', llaveForanea: true, urlGet:'http://localhost:5290/api/Equipo/getEquiposAll'}
+    ]"
+    urlEntidad="/reporteEquipo">
+</app-form>

@@ -5,7 +5,12 @@
     apirUrlGetByName="http://localhost:5290/api/TipoDeEquipo/getTipoDeEquipoByName?nombre="
     apirUrlCreate="/createTipoEquipo"
     apirUrlDelete="http://localhost:5290/api/TipoDeEquipo/deleteTipoDeEquipo?id="
-    [columnas]="['idTipoDeEquipo', 'nombreTipoDeEquipo', 'descripcionTipoDeEquipo', 'nombreMarca']"
+    apiUrlUpdate="http://localhost:5290/api/TipoDeEquipo/updateTipoDeEquipo?id="
+    [columnas]="['id', 'nombre', 'descripcionTipoDeEquipo', 'nombreMarca']"
     [nombreColumnas]="['Id', 'Nombre', 'Descripción', 'Marca']"
-    [camposActualizables]="['nombreTipoDeEquipo', 'descripcionTipoDeEquipo']">
+    [camposActualizables]="[
+        {nombre: 'nombre', tipo: 'text', llaveForanea: false},
+        {nombre: 'descripcionTipoDeEquipo', tipo: 'text', llaveForanea: false}
+    ]"
+    placeHolder="Buscar por nombre">
 </app-table>

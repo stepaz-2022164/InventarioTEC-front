@@ -1,0 +1,33 @@
+<div class="form-container">
+    <!-- Botón "Volver" -->
+    <button class="btn-volver" (click)="volverATabla()">
+        <i class="fa fa-arrow-left"></i> Volver
+    </button>
+
+    <form (ngSubmit)="guardarDatos()">
+        <h2>{{ titulo }}</h2>
+        
+        <div *ngFor="let campo of campos; let i = index" class="form-group">
+            <label class="form-title">{{ titulos[i] || campo.nombre }}</label>
+
+            <!-- Input para campos básicos (oculto si el campo es llave foránea) -->
+            <input *ngIf="(campo.tipo === 'text' || campo.tipo === 'number') && !campo.llaveForanea" 
+                [type]="campo.tipo" class="form-control" [(ngModel)]="registro[campo.nombre]" 
+                name="{{campo.nombre}}" [style.display]="campo.llaveForanea ? 'none' : 'block'">
+
+            <!-- Select para llaves foráneas con placeholder -->
+            <select *ngIf="campo.llaveForanea" class="form-control" [(ngModel)]="registro[campo.nombre]"
+                name="{{campo.nombre}}">
+                <option *ngFor="let opcion of campo.opciones" [value]="opcion.id">
+                    {{ opcion.id }} | {{ opcion.nombre }}
+                </option>
+            </select>
+
+            <!-- Date picker para campos de fecha -->
+            <input *ngIf="campo.tipo === 'date'" type="date" class="form-control" [(ngModel)]="registro[campo.nombre]"
+                name="{{campo.nombre}}">
+        </div>
+
+        <button type="submit" class="btn btn-primary" (click)="descargarArchivo()">Guardar</button>
+    </form>
+</div>

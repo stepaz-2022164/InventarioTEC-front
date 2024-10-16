@@ -1,0 +1,15 @@
+<app-header></app-header>
+<app-form
+    titulo="Propietario Equipo"
+    apiUrlCreate="http://localhost:5290/api/PropietarioEquipo/createPropietarioEquipo"
+    [titulos]="['Empleado', 'Tipo De Equipo', 'Equipo', 'HUB','Fecha de entrega']"
+    [campos]="[
+        {nombre: 'idEmpleado', tipo: 'number', llaveForanea: true, urlGet:'http://localhost:5290/api/Empleado/getEmpleadosAll'},
+        {nombre: 'idTipoDeEquipo', tipo: 'number', llaveForanea: true, urlGet:'http://localhost:5290/api/TipoDeEquipo/getTiposDeEquiposAll'},
+        {nombre: 'idEquipo', tipo: 'number', llaveForanea: true, urlGet:'http://localhost:5290/api/Equipo/getEquiposAll'},
+        {nombre: 'idHUB', tipo: 'number', llaveForanea: true, urlGet:'http://localhost:5290/api/HUB/getHUBSAll'},
+        {nombre: 'fechaDeEntrega', tipo: 'date', llaveForanea: false}
+    ]"
+    urlEntidad="/propietarioEquipo"
+    urlPdf="http://localhost:5290/api/PropietarioEquipo/descargarHoja">
+</app-form>

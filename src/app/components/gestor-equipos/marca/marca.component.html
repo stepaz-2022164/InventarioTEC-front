@@ -5,7 +5,12 @@
     apirUrlGetByName="http://localhost:5290/api/Marca/getMarcaByName?nombre="
     apirUrlCreate="/createMarca"
     apirUrlDelete="http://localhost:5290/api/Marca/deleteMarca?id="
-    [columnas]="['idMarca', 'nombreMarca', 'descripcionMarca']"
+    apiUrlUpdate="http://localhost:5290/api/Marca/updateMarca?id="
+    [columnas]="['id', 'nombre', 'descripcionMarca']"
     [nombreColumnas]="['Id', 'Nombre', 'Descripción']"
-    [camposActualizables]="['nombreMarca', 'descripcionMarca']">
+    [camposActualizables]="[
+        {nombre: 'nombre', tipo: 'text', llaveForanea: false},
+        {nombre: 'descripcionMarca', tipo: 'text', llaveForanea: false}
+    ]"
+    placeHolder="Buscar por nombre">
 </app-table>

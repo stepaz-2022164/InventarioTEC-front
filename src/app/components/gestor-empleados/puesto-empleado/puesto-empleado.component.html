@@ -5,8 +5,13 @@
     apirUrlGetByName= "http://localhost:5290/api/PuestoEmpleado/getPuestoEmpleadoByName?name="
     apirUrlCreate="/createPuestoEmpleado"
     apirUrlDelete="http://localhost:5290/api/PuestoEmpleado/deletePuestoEmpleado?id="
-    [columnas] = "['idPuestoEmpleado', 'nombrePuestoEmpleado', 'descripcionPuestoEmpleado', 'nombreAreaEmpleado']"
+    apiUrlUpdate="http://localhost:5290/api/PuestoEmpleado/updatePuestoEmpleado?id="
+    [columnas] = "['id', 'nombre', 'descripcionPuestoEmpleado', 'nombreAreaEmpleado']"
     [nombreColumnas] = "['Id', 'Puesto', 'Descripción', 'Área de empleado']"
-    [camposActualizables]="['nombrePuestoEmpleado', 'descripcionPuestoEmpleado']">
+    [camposActualizables]="[
+        {nombre: 'nombre', tipo: 'text', llaveForanea: false},
+        {nombre: 'descripcionPuestoEmpleado', tipo: 'text', llaveForanea: false}
+    ]"
+    placeHolder="Buscar por nombre">
 </app-table>
 

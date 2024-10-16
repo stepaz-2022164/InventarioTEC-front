@@ -24,6 +24,15 @@ import { MarcaComponent } from './components/gestor-equipos/marca/marca.componen
 import { PropietarioEquipoComponent } from './components/gestor-equipos/propietario-equipo/propietario-equipo.component';
 import { ReporteEquipoComponent } from './components/gestor-equipos/reporte-equipo/reporte-equipo.component';
 import { TipoEquipoComponent } from './components/gestor-equipos/tipo-equipo/tipo-equipo.component';
+import { FormComponent } from './components/form/form.component';
+import { FormEquipoComponent } from './components/gestor-equipos/equipo/form-equipo/form-equipo.component';
+import { FormEmpleadoComponent } from './components/gestor-empleados/empleado/form-empleado/form-empleado.component';
+import { FormSedeComponent } from './components/operativo/sede/form-sede/form-sede.component';
+import { FormPuestoEmpleadoComponent } from './components/gestor-empleados/puesto-empleado/form-puesto-empleado/form-puesto-empleado.component';
+import { FormMarcaComponent } from './components/gestor-equipos/marca/form-marca/form-marca.component';
+import { FormTipoEquipoComponent } from './components/gestor-equipos/tipo-equipo/form-tipo-equipo/form-tipo-equipo.component';
+import { FormPropietarioEquipoComponent } from './components/gestor-equipos/propietario-equipo/form-propietario-equipo/form-propietario-equipo.component';
+import { FormReporteEquipoComponent } from './components/gestor-equipos/reporte-equipo/form-reporte-equipo/form-reporte-equipo.component';
 
 export const getToken = () => {
   return localStorage.getItem('token');
@@ -48,7 +57,16 @@ export const getToken = () => {
     MarcaComponent,
     PropietarioEquipoComponent,
     ReporteEquipoComponent,
-    TipoEquipoComponent
+    TipoEquipoComponent,
+    FormComponent,
+    FormEquipoComponent,
+    FormEmpleadoComponent,
+    FormSedeComponent,
+    FormPuestoEmpleadoComponent,
+    FormMarcaComponent,
+    FormTipoEquipoComponent,
+    FormPropietarioEquipoComponent,
+    FormReporteEquipoComponent
   ],
   imports: [
     HttpClientModule,

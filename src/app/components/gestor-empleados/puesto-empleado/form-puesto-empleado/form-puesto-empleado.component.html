@@ -1,0 +1,12 @@
+<app-header></app-header>
+<app-form
+    titulo="Puesto Empleado"
+    apiUrlCreate="http://localhost:5290/api/PuestoEmpleado/createPuestoEmpleado"
+    [titulos]="['Nombre del puesto', 'Descripción', 'Área del empleado']"
+    [campos]="[
+        {nombre: 'nombrePuestoEmpleado' , tipo: 'text', llaveForanea: false},
+        {nombre: 'descripcionPuestoEmpleado' , tipo: 'text', llaveForanea: false},
+        {nombre: 'idAreaEmpleado' , tipo: 'text', llaveForanea: true, urlGet:'http://localhost:5290/api/AreaEmpleado/getAreasEmpleadosAll'},
+    ]"
+    urlEntidad="/puestoEmpleado">
+</app-form>
