@@ -15,6 +15,7 @@ export class FormComponent implements OnInit {
   @Input() titulos!: string[];
   @Input() campos!: {nombre: string, tipo: string, llaveForanea: boolean, opciones?: any[], urlGet?: string}[];
   @Input() urlEntidad!: string;
+  @Input() urlPdf!: string;
   registro: any = {};
 
   constructor(private http: HttpClient, private router: Router){}
@@ -76,5 +77,24 @@ export class FormComponent implements OnInit {
 
   resetearFormulario() {
     this.registro = {};
+  }
+
+  descargarArchivo() {
+    if (this.urlPdf != null) {
+        this.http.get(`${this.urlPdf}`, { responseType: 'blob'})
+      .subscribe({
+        next: (response: Blob) => {
+          const url = window.URL.createObjectURL(response);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'Hoja.pdf';
+          a.click();
+          window.URL.revokeObjectURL(url);
+        },
+        error: () => {
+          Swal.fire('Error', 'No se pudo descargar el archivo.', 'error');
+        }
+      })
+    }
   }
 }
