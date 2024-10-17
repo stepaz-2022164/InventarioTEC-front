@@ -2,9 +2,19 @@
   <div class="entity-header">
     <h2>{{ entidad }}</h2>
     <input type="text" #inputBox (input)="onSearch(inputBox.value)" [hidden]="isSearchDisabled.valueOf()" [placeholder]="placeHolder" />
-    <button (click)="abrirFiltros()" class="filter-button">
+    <button [hidden]="isFilterDisabled.valueOf()" (click)="abrirFiltros()" class="filter-button">
       <i class="fa fa-filter"></i>
     </button>
+    <button (click)="exportarAPDF()" class="filter-button">
+      <i class="fa-solid fa-file-export"></i>
+    </button>
+
+    <div *ngIf="mostrarSelectFiltro" class="filter-select-container">
+      <select #filtro (change)="aplicarFiltroSeleccionado(filtro.value)" class="form-control">
+        <option value="">Seleccione un filtro</option>
+        <option *ngFor="let opcion of opcionesFiltro" [value]="opcion">{{ opcion }}</option>
+      </select>
+    </div>
   </div>
 
   <table class="table">

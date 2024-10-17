@@ -53,20 +53,20 @@
 .button-container {
   display: flex;
   justify-content: flex-end;
-  margin-top: 20px;
+  margin-top: 5pxx;
 }
 
 .create-button {
-  background-color: #ff6600; /* Color de fondo del botón */
-  color: white; /* Color del texto */
+  background-color: #ff6600; 
+  color: white; 
   border: none;
-  padding: 10px 20px;
+  padding: 10px 10px;
   font-size: 16px;
   cursor: pointer;
   border-radius: 5px;
   display: flex;
   align-items: center;
-  gap: 10px; /* Espacio entre texto y icono */
+  gap: 10px;
 }
 
 .create-button:hover {
@@ -74,7 +74,7 @@
 }
 
 .create-button i {
-  font-size: 16px; /* Tamaño del ícono */
+  font-size: 16px; 
 }
 
 .delete-button {

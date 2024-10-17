@@ -4,6 +4,9 @@ import { debounceTime, Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import * as jQuery from 'jquery';
+import { jsPDF } from 'jspdf';
+import 'jspdf-autotable';
+import { enviroment } from 'src/environments/environment';
 declare var $: any;
 
 @Component({
@@ -12,6 +15,8 @@ declare var $: any;
   styleUrls: ['./table.component.css']
 })
 export class TableComponent implements OnInit {
+  private API_URL = enviroment.API_URL;
+
   @Input() entidad!: string;
   @Input() apiUrl!: string;
   @Input() apirUrlGetByName!: string;
@@ -22,6 +27,8 @@ export class TableComponent implements OnInit {
   @Input() apiUrlUpdate!: string;
   @Input() camposActualizables!: {nombre: string, tipo: string, llaveForanea: boolean, opciones?: any[], urlGet?: string}[];
   @Input() placeHolder!: string;
+  @Input() apiUrlFiltro!: string;
+  @Input() apiUrlGetFiltro!: string;
 
   data: any[] = [];
   filtros: any[] = [];
@@ -33,7 +40,10 @@ export class TableComponent implements OnInit {
   isCreateDisabled: boolean = false;
   isDeleteDisabled: boolean = false;
   isUpdateDisabled: boolean = false;
+  isFilterDisabled: boolean = false;
   registroSeleccionado: any = {};
+  mostrarSelectFiltro: boolean = false;
+  opcionesFiltro: string[] = [];
 
   constructor(private http: HttpClient, private router: Router, private cdr: ChangeDetectorRef) { }
 
@@ -42,7 +52,8 @@ export class TableComponent implements OnInit {
       this.statusSearch();
       this.statusCreate();
       this.statusDelete();
-      this.statusUpdate()
+      this.statusUpdate();
+      this.statusFiltro();
       this.buscador.pipe(debounceTime(500)).subscribe(terminoBuscador => {
         this.terminoBuscador = terminoBuscador;
         this.getData();
@@ -92,9 +103,15 @@ export class TableComponent implements OnInit {
     }
   }
 
+  statusFiltro(){
+    if (this.apiUrlFiltro == null) {
+      this.isFilterDisabled = true;
+    }
+  }
+
   getData() {
     if (this.terminoBuscador) {
-      this.http.get<any>(`${this.apirUrlGetByName}${this.terminoBuscador}`)
+      this.http.get<any>(`${this.API_URL}${this.apirUrlGetByName}${this.terminoBuscador}`)
       .subscribe(response => {
         this.data = response; 
         this.totalPaginas = Math.ceil(this.data.length / 10);
@@ -105,7 +122,7 @@ export class TableComponent implements OnInit {
         this.filtros = [];
       });
     } else {
-      this.http.get<any>(`${this.apiUrl}?pagina=${this.pagina}&numeroPaginas=10`)
+      this.http.get<any>(`${this.API_URL}${this.apiUrl}?pagina=${this.pagina}&numeroPaginas=10`)
       .subscribe(response => {
         this.data = response.data;
         const totalRecords = response.totalRecords;
@@ -140,7 +157,42 @@ export class TableComponent implements OnInit {
   }
 
   abrirFiltros(){
-    
+    this.mostrarSelectFiltro = !this.mostrarSelectFiltro;
+    if (this.mostrarSelectFiltro) {
+      this.cargarOpcionesFiltro();
+    }
+  }
+
+  cargarOpcionesFiltro() {
+    this.http.get<any>(`${this.API_URL}${this.apiUrlFiltro}`).subscribe(
+      response => {
+        this.opcionesFiltro = response.data.map((item: any) => item.nombre);
+      },
+      error => {
+        Swal.fire('Error', 'No se pudieron cargar las opciones para los filtros.', 'error');
+      }
+    );
+  }
+
+  aplicarFiltroSeleccionado(filtro: string) {
+    if (filtro) {
+      this.http.get<any>(`${this.API_URL}${this.apiUrlGetFiltro}${filtro}`)
+        .subscribe(
+          response => {
+            this.data = response;
+            this.totalPaginas = Math.ceil(this.data.length / 10);
+            this.filtros = [...this.data];
+          },
+          error => {
+            this.data = [];
+            this.totalPaginas = 1;
+            this.filtros = [];
+            Swal.fire('Error', 'No se encontraron registros para el filtro seleccionado.', 'error');
+          }
+        );
+    } else {
+      this.getData();
+    }
   }
 
   crearEntidad(){
@@ -160,7 +212,7 @@ export class TableComponent implements OnInit {
       confirmButtonText: 'Sí, eliminar'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.http.put(`${this.apirUrlDelete}${id}`, {}).subscribe({
+        this.http.put(`${this.API_URL}${this.apirUrlDelete}${id}`, {}).subscribe({
           next: (response) => {
             Swal.fire('¡Eliminado!', 'El registro ha sido eliminado.', 'success')
             .then(() => {
@@ -236,4 +288,21 @@ export class TableComponent implements OnInit {
     return index !== -1 ? this.nombreColumnas[index] : campo;
   }
   
+  exportarAPDF() {
+    const doc = new jsPDF();
+    const columnas = this.nombreColumnas;
+    const filas = this.filtros.map(item => this.columnas.map(col => item[col]));
+
+    doc.text(this.entidad, 14, 10);
+
+    (doc as any).autoTable({
+      head: [columnas],
+      body: filas,
+      startY: 20,
+      theme: 'striped',
+      styles: { fontSize: 10 },
+    });
+
+    doc.save(`${this.entidad}.pdf`);
+  }
 }

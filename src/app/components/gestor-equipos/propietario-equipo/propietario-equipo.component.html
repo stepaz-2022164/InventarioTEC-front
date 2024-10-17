@@ -1,15 +1,13 @@
 <app-header></app-header>
 <app-table
     entidad="Propietario Equipo"
-    apiUrl="http://localhost:5290/api/PropietarioEquipo/getPropietariosEquipos"
-    apirUrlGetByName="http://localhost:5290/api/PropietarioEquipo/getEquipoByOwner?nombre="
+    apiUrl="/api/PropietarioEquipo/getPropietariosEquipos"
+    apirUrlGetByName="/api/PropietarioEquipo/getEquipoByOwner?nombre="
     apirUrlCreate="/createPropietarioEquipo"
-    apirUrlDelete="http://localhost:5290/api/PropietarioEquipo/deletePropietarioEquipo?id="
+    apirUrlDelete="/api/PropietarioEquipo/deletePropietarioEquipo?id="
     [columnas]="['idPropietarioEquipo', 'nombreEmpleado','nombreTipoDeEquipo' ,'numeroDeSerie', 'nombreHUB','fechaDeEntrega']"
     [nombreColumnas]="['Id', 'Empleado', 'Tipo De Equipo','Número de serie equipo', 'HUB','Fecha de entrega']"
-    [camposActualizables]="[
-        {nombre: 'nombreEmpleado', tipo: 'number', llaveForanea: true, urlGet: 'http://localhost:5290/api/Empleado/getEmpleadosAll'},
-        {nombre: 'nombreHUB', tipo: 'number', llaveForanea: true, urlGet: 'http://localhost:5290/api/HUB/getHUBSAll'}
-    ]"
-    placeHolder="Buscar por empleado">
+    placeHolder="Buscar por empleado"
+    apiUrlFiltro="/api/HUB/getHUBSAll"
+    apiUrlGetFiltro="/api/PropietarioEquipo/getPropietarioEquipoByHUB?hub=">
 </app-table>
