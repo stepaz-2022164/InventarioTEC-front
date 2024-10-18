@@ -29,7 +29,7 @@
         <td *ngFor="let columna of columnas; let j = index" [attr.data-index]="j">
           {{ item[columna] }}
         </td>
-        <td>
+        <td [hidden]="isActionDisabled.valueOf()">
           <button [hidden]="isUpdateDisabled.valueOf()" class="edit-button" (click)="abriModalUpdate(i)">
             <i class="fa fa-edit"></i>
           </button>

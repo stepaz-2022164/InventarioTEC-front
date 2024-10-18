@@ -1,11 +1,11 @@
 <app-header></app-header>
 <app-table
     entidad="Marca"
-    apiUrl="http://localhost:5290/api/Marca/getMarcas"
-    apirUrlGetByName="http://localhost:5290/api/Marca/getMarcaByName?nombre="
+    apiUrl="/api/Marca/getMarcas"
+    apirUrlGetByName="/api/Marca/getMarcaByName?nombre="
     apirUrlCreate="/createMarca"
-    apirUrlDelete="http://localhost:5290/api/Marca/deleteMarca?id="
-    apiUrlUpdate="http://localhost:5290/api/Marca/updateMarca?id="
+    apirUrlDelete="/api/Marca/deleteMarca?id="
+    apiUrlUpdate="/api/Marca/updateMarca?id="
     [columnas]="['id', 'nombre', 'descripcionMarca']"
     [nombreColumnas]="['Id', 'Nombre', 'Descripción']"
     [camposActualizables]="[

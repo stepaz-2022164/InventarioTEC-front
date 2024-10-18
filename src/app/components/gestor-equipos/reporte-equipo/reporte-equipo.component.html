@@ -1,11 +1,11 @@
 <app-header></app-header>
 <app-table
     entidad="Reporte Equipo"
-    apiUrl="http://localhost:5290/api/ReporteEquipo/getReporteEquipos"
-    apirUrlGetByName="http://localhost:5290/api/ReporteEquipo/getReporteEquipoBySerialNumber?serialNumber="
+    apiUrl="/api/ReporteEquipo/getReporteEquipos"
+    apirUrlGetByName="/api/ReporteEquipo/getReporteEquipoBySerialNumber?serialNumber="
     apirUrlCreate="/createReporteEquipo"
-    apirUrlDelete="http://localhost:5290/api/ReporteEquipo/deleteReporteEquipo?id="
-    apiUrlUpdate="http://localhost:5290/api/ReporteEquipo/updateReporteEquipo?id="
+    apirUrlDelete="/api/ReporteEquipo/deleteReporteEquipo?id="
+    apiUrlUpdate="/api/ReporteEquipo/updateReporteEquipo?id="
     [columnas]="['idReporteEquipo', 'numeroDeSerie', 'descripcionReporteEquipo', 'fechaReporte']"
     [nombreColumnas]="['Id', 'Número de serie', 'Descripción', 'Fecha del reporte']"
     [camposActualizables]="[

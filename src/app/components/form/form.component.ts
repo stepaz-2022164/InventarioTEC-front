@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { HttpClient } from '@angular/common/http';
+import { enviroment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-form',
@@ -9,6 +10,8 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
+  private API_URL = enviroment.API_URL;
+
   @Input() titulo!: string;
   @Input() apiUrlCreate!: string;
   @Input() apiUrlsGet!: {[key: string]: string};
@@ -27,7 +30,7 @@ export class FormComponent implements OnInit {
   obtenerDatosForaneos() {
     this.campos.forEach(campo => {
       if (campo.llaveForanea && campo.urlGet) {
-        this.http.get<any>(campo.urlGet).subscribe({
+        this.http.get<any>(`${this.API_URL}${campo.urlGet}`).subscribe({
           next: (response) =>  {
             campo.opciones = response.data.map((item: any) => {
               return {id: item.id, nombre: item.nombre}
@@ -62,7 +65,7 @@ export class FormComponent implements OnInit {
   }
 
   crearEntidad() {
-    this.http.post(this.apiUrlCreate, this.registro)
+    this.http.post(`${this.API_URL}${this.apiUrlCreate}`, this.registro)
       .subscribe({
         next: () => {
           Swal.fire('Éxito', 'Registro creado exitosamente', 'success').then(() => {

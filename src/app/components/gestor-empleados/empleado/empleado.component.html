@@ -1,11 +1,11 @@
 <app-header></app-header>
 <app-table
     entidad="Empleado"
-    apiUrl="http://localhost:5290/api/Empleado/getEmpleados"
-    apirUrlGetByName="http://localhost:5290/api/Empleado/getEmpleadoByName?name="
+    apiUrl="/api/Empleado/getEmpleados"
+    apirUrlGetByName="/api/Empleado/getEmpleadoByName?name="
     apirUrlCreate="/createEmpleado"
-    apirUrlDelete="http://localhost:5290/api/Empleado/deleteEmpleado?id="
-    apiUrlUpdate="http://localhost:5290/api/Empleado/updateEmpleado?id="
+    apirUrlDelete="/api/Empleado/deleteEmpleado?id="
+    apiUrlUpdate="/api/Empleado/updateEmpleado?id="
     [columnas]="['id', 'nombre', 'numeroDeFicha', 'telefonoEmpleado', 'correoEmpleado', 'nombreDepartamentoEmpleado', 'nombreAreaEmpleado', 'nombrePuestoEmpleado', 'nombreSede']"
     [nombreColumnas]="['Id', 'Nombre', 'Ficha', 'Télefono', 'Correo', 'Departamento', 'Área', 'Puesto', 'Sede']"
     [camposActualizables]="[

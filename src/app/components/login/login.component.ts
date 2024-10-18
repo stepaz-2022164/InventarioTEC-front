@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { enviroment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -10,6 +11,8 @@ import { Router } from '@angular/router';
 })
 
 export class LoginComponent {
+  private API_URL = enviroment.API_URL;
+
   title = 'Login';
   usuario: string = '';
   pass: string = '';
@@ -26,7 +29,7 @@ export class LoginComponent {
       return;
     }
 
-    this.http.post<any>('http://localhost:5290/api/Usuario/login', {usuario: this.usuario, pass: this.pass})
+    this.http.post<any>(`${this.API_URL}/api/Usuario/login`, {usuario: this.usuario, pass: this.pass})
     .subscribe(
       res => {
         localStorage.setItem('token', res.token);

@@ -1,8 +1,8 @@
 <app-header></app-header>
 <app-table
     entidad="HUB"
-    apiUrl="http://localhost:5290/api/HUB/getHUBS"
-    apirUrlGetByName="http://localhost:5290/api/HUB/getHUBSByName?name="
+    apiUrl="/api/HUB/getHUBS"
+    apirUrlGetByName="/api/HUB/getHUBSByName?name="
     [columnas]="['id', 'nombre', 'nombrePais', 'nombreRegion']"
     [nombreColumnas]="['Id', 'Nombre', 'Pais', 'Región']"
     placeHolder="Buscar por nombre">

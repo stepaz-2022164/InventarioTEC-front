@@ -41,6 +41,7 @@ export class TableComponent implements OnInit {
   isDeleteDisabled: boolean = false;
   isUpdateDisabled: boolean = false;
   isFilterDisabled: boolean = false;
+  isActionDisabled: boolean = false;
   registroSeleccionado: any = {};
   mostrarSelectFiltro: boolean = false;
   opcionesFiltro: string[] = [];
@@ -54,6 +55,7 @@ export class TableComponent implements OnInit {
       this.statusDelete();
       this.statusUpdate();
       this.statusFiltro();
+      this.statusAcciones();
       this.buscador.pipe(debounceTime(500)).subscribe(terminoBuscador => {
         this.terminoBuscador = terminoBuscador;
         this.getData();
@@ -63,7 +65,7 @@ export class TableComponent implements OnInit {
   obtenerDatosForaneos(): Promise<void> {
     const promesas = this.camposActualizables.map(campo => {
       if (campo.llaveForanea && campo.urlGet) {
-        return this.http.get<any>(campo.urlGet).toPromise().then(response => {
+        return this.http.get<any>(`${this.API_URL}${campo.urlGet}`).toPromise().then(response => {
           campo.opciones = response.data.map((item: any) => {
             return { id: item.id, nombre: item.nombre };
           });
@@ -106,6 +108,12 @@ export class TableComponent implements OnInit {
   statusFiltro(){
     if (this.apiUrlFiltro == null) {
       this.isFilterDisabled = true;
+    }
+  }
+
+  statusAcciones(){
+    if (this.apiUrlUpdate == null && this.apirUrlDelete == null) {
+      this.isActionDisabled = true;
     }
   }
 
@@ -263,7 +271,7 @@ export class TableComponent implements OnInit {
       });
       return;
     }
-    this.http.put(`${this.apiUrlUpdate}${id}`, this.registroSeleccionado)
+    this.http.put(`${this.API_URL}${this.apiUrlUpdate}${id}`, this.registroSeleccionado)
     .subscribe({
       next: (response) => {
         Swal.fire('Actualizado!', 'Registro actualizado exitosamente', 'success')

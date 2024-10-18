@@ -1,8 +1,8 @@
 <app-header></app-header>
 <app-table
     entidad= "Área Empleado"
-    apiUrl= "http://localhost:5290/api/AreaEmpleado/getAreasEmpleados"
-    apirUrlGetByName= "http://localhost:5290/api/AreaEmpleado/getAreaEmpleadoByName?name="
+    apiUrl= "/api/AreaEmpleado/getAreasEmpleados"
+    apirUrlGetByName= "/api/AreaEmpleado/getAreaEmpleadoByName?name="
     [columnas]= "['id', 'nombre', 'descripcionAreaEmpleado', 'nombreDepartamentoEmpleado']"
     [nombreColumnas]= "['Id', 'Nombre', 'Descripción', 'Departamendo Empleado']"
     placeHolder="Buscar por nombre">
